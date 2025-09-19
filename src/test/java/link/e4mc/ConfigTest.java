@@ -12,6 +12,19 @@ public class ConfigTest {
     private File tempConfigFile;
     private Config config;
     
+    /**
+     * Custom exception for ConfigTest-specific errors
+     */
+    public static class ConfigTestException extends Exception {
+        public ConfigTestException(String message) {
+            super(message);
+        }
+        
+        public ConfigTestException(String message, Throwable cause) {
+            super(message, cause);
+        }
+    }
+    
     @Before
     public void setUp() throws IOException {
         // Create a temporary file for testing
@@ -20,9 +33,13 @@ public class ConfigTest {
     }
     
     @After
-    public void tearDown() {
+    public void tearDown() throws ConfigTestException {
         if (tempConfigFile != null && tempConfigFile.exists()) {
-            tempConfigFile.delete();
+            try {
+                java.nio.file.Files.delete(tempConfigFile.toPath());
+            } catch (IOException e) {
+                throw new ConfigTestException("Failed to delete temporary config file: " + tempConfigFile.getAbsolutePath(), e);
+            }
         }
     }
     

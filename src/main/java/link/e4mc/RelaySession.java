@@ -1,6 +1,5 @@
 package link.e4mc;
 
-import com.google.gson.Gson;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.EnumChatFormatting;
@@ -14,7 +13,6 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public class RelaySession {
     private static final Logger LOGGER = LogManager.getLogger(RelaySession.class);
-    private static final Gson GSON = new Gson();
 
     private final AtomicBoolean running = new AtomicBoolean(false);
     private Socket relaySocket;
@@ -32,12 +30,7 @@ public class RelaySession {
     }
 
     public void startAsync() {
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                start();
-            }
-        }, "e4mc-relay-session");
+        Thread thread = new Thread(this::start, "e4mc-relay-session");
         thread.setDaemon(true);
         thread.start();
     }
@@ -58,12 +51,7 @@ public class RelaySession {
             relaySocket = new Socket(relayInfo.getHost(), relayInfo.getPort());
             state = State.STARTED;
             addChatMessage(EnumChatFormatting.GREEN + "Connected to relay: " + relayInfo.getId());
-            Thread readerThread = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    handleIncomingData();
-                }
-            }, "e4mc-relay-reader");
+            Thread readerThread = new Thread(this::handleIncomingData, "e4mc-relay-reader");
             readerThread.setDaemon(true);
             readerThread.start();
         } catch (Exception e) {

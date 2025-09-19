@@ -16,12 +16,10 @@ public class ConnectionMixin {
 
     @Inject(method = "isLocalChannel", at = @At("RETURN"), cancellable = true)
     private void isLocalChannelInject(CallbackInfoReturnable<Boolean> cir) {
-        if (cir.getReturnValue()) {
-            if (this.channel != null && this.channel.localAddress() instanceof LocalAddress) {
-                LocalAddress localAddr = (LocalAddress) this.channel.localAddress();
-                if ("e4mc-relay".equals(localAddr.id())) {
-                    cir.setReturnValue(false);
-                }
+        if (cir.getReturnValue() && this.channel != null && this.channel.localAddress() instanceof LocalAddress) {
+            LocalAddress localAddr = (LocalAddress) this.channel.localAddress();
+            if ("e4mc-relay".equals(localAddr.id())) {
+                cir.setReturnValue(false);
             }
         }
     }

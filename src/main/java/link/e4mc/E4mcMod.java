@@ -18,7 +18,7 @@ public class E4mcMod {
     
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        logger = event.getModLog();
+        static logger = event.getModLog();
         config = new Config(event.getSuggestedConfigurationFile());
         
         // Register event handler
