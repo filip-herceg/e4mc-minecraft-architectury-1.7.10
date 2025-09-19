@@ -38,9 +38,8 @@ sourceSets {
 }
 
 // Also exclude during ForgeGradle's source copying step (build/sources/java)
-tasks.matching { it.name == 'sourceMainJava' }.all {
-    exclude 'link/e4mc/mixin/**'
-}
+// Note: SourceCopyTask does not support exclude() directly; we rely on
+// sourceSets exclusion and removing mixin sources from this 1.7.10 port.
 
 // Minecraft and Forge configuration
 minecraft {

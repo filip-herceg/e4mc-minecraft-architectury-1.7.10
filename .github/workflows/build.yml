@@ -47,7 +47,7 @@ jobs:
           java -version
 
       - name: Setup Decompiled Workspace
-        run: ./gradlew setupDecompWorkspace --no-daemon --console=plain --stacktrace
+        run: ./gradlew clean setupDecompWorkspace --no-daemon --console=plain --stacktrace
 
       - name: Build with Gradle
         run: ./gradlew build --no-daemon --console=plain --stacktrace
