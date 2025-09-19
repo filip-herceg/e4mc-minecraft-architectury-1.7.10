@@ -93,7 +93,6 @@ jobs:
         java-version: '8'
         distribution: 'temurin'
     
-    # Cache Gradle dependencies for release build too
     - name: Cache Gradle packages
       uses: actions/cache@v3
       with:
@@ -118,7 +117,7 @@ jobs:
       uses: softprops/action-gh-release@v2
       with:
         files: |
-          build/libs/e4mc_minecraft-1.7.10-*.jar
+          build/libs/*.jar
         draft: false
         generate_release_notes: true
         name: "E4MC Minecraft 1.7.10 - ${{ github.ref_name }}"
