@@ -53,3 +53,22 @@ Please contribute
 ## License
 
 [MIT](LICENSE)
+
+## Releases
+
+Nightly builds
+
+- Push any commit to the default branch `rererewrite`. A GitHub Actions workflow will build artifacts and publish/update a prerelease named "E4MC Minecraft 1.7.10 - Nightly" with tag `nightly`.
+
+Tagged releases
+
+- Create and push a tag starting with `v` (for example `v5.4.1-1.7.10`). The workflow will create a normal GitHub Release and attach the built JARs.
+
+PowerShell examples
+
+```powershell
+# Nightly: just push your commits to rererewrite
+# Release: tag the current commit and push the tag
+ git tag v5.4.1-1.7.10
+ git push origin v5.4.1-1.7.10
+```

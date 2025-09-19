@@ -28,6 +28,20 @@ archivesBaseName = "e4mc_minecraft-1.7.10"
 // Java compatibility
 sourceCompatibility = targetCompatibility = "1.8"
 
+// Exclude architectury-era mixin sources from this 1.7.10 port
+sourceSets {
+    main {
+        java {
+            exclude 'link/e4mc/mixin/**'
+        }
+    }
+}
+
+// Also exclude during ForgeGradle's source copying step (build/sources/java)
+tasks.matching { it.name == 'sourceMainJava' }.all {
+    exclude 'link/e4mc/mixin/**'
+}
+
 // Minecraft and Forge configuration
 minecraft {
     version = "1.7.10-10.13.4.1614-1.7.10"
