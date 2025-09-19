@@ -1,0 +1,16 @@
+[
+  {
+    "modid": "e4mc_minecraft",
+    "name": "e4mc",
+    "description": "Open a LAN server to anyone, anywhere, anytime.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "",
+    "updateUrl": "",
+    "authorList": ["skyevg"],
+    "credits": "skyevg",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
+]

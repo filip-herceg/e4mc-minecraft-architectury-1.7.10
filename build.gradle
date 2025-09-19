@@ -1,79 +1,133 @@
-plugins {
-    id "architectury-plugin" version "3.4-SNAPSHOT"
-    id "dev.architectury.loom" version "1.7-SNAPSHOT" apply false
-}
-
-architectury {
-    minecraft = rootProject.minecraft_version
-}
-
-subprojects {
-    apply plugin: "dev.architectury.loom"
-
-    loom {
-        silentMojangMappingsLicense()
-    }
-
-    dependencies {
-        minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
-        // The following line declares the mojmap mappings, you may use other mappings as well
-        mappings loom.officialMojangMappings()
-        // The following line declares the yarn mappings you may select this one as well.
-        // mappings "net.fabricmc:yarn:1.18.2+build.4:v2"
-    }
-}
-
-allprojects {
-    apply plugin: "java"
-    apply plugin: "architectury-plugin"
-    apply plugin: "maven-publish"
-
-    base {
-        archivesName = rootProject.archives_base_name + "-" + project.name
-    }
-
-    version = rootProject.mod_version
-    group = rootProject.maven_group
-
+buildscript {
     repositories {
-        // Add repositories to retrieve artifacts from in here.
-        // You should only use this when depending on other mods because
-        // Loom adds the essential maven repositories to download Minecraft and libraries from automatically.
-        // See https://docs.gradle.org/current/userguide/declaring_repositories.html
-        // for more information about repositories.
-        maven { url "https://maven.neoforged.net/releases/" }
-        maven { url 'https://repo.sleeping.town/' }
-        maven { url 'https://maven.is-quite.gay/' }
-    }
-
-    tasks.withType(JavaCompile) {
-        options.encoding = "UTF-8"
-        options.release = 17
-    }
-
-    java {
-        withSourcesJar()
-    }
-}
-
-ext.getLatestChangelog = {
-    Collection<String> lines = file("$rootDir/CHANGELOG.md").readLines()
-    String changelog = ""
-    Boolean atSegment = false
-    for (String line : lines) {
-        if (line.startsWith("## ")) {
-            if (atSegment) break // hit next segment
-            atSegment = true
+        mavenCentral()
+        maven {
+            name = "forge"
+            url = "https://maven.minecraftforge.net/"
         }
-        if (atSegment) changelog += "$line\n"
+        maven {
+            name = "sonatype"
+            url = "https://oss.sonatype.org/content/repositories/snapshots/"
+        }
+        maven {
+            url = "https://jitpack.io"
+        }
     }
-    return changelog.trim()
+    dependencies {
+        classpath 'com.github.GTNewHorizons:ForgeGradle:1.2.11'
+    }
 }
 
-tasks.register("viewLatestChangelog") {
-    group "documentation"
-    description "Print the topmost single version section from the full CHANGELOG.md file."
-    doLast {
-        println(getLatestChangelog())
+apply plugin: 'forge'
+
+// Version information
+version = "5.4.1-1.7.10"
+group = "link.e4mc"
+archivesBaseName = "e4mc_minecraft-1.7.10"
+
+// Java compatibility
+sourceCompatibility = targetCompatibility = "1.8"
+
+// Minecraft and Forge configuration
+minecraft {
+    version = "1.7.10-10.13.4.1614-1.7.10"
+    runDir = "run"
+    mappings = "stable_12"
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        name = "SpongePowered"
+        url = "https://repo.spongepowered.org/maven"
     }
 }
+
+dependencies {
+    // Java 8 compatible HTTP client
+    compile 'org.apache.httpcomponents:httpclient:4.5.13'
+    compile 'com.google.code.gson:gson:2.8.0'
+    
+    // Test dependencies
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-core:1.10.19'
+    testCompile 'org.powermock:powermock-module-junit4:1.6.6'
+    testCompile 'org.powermock:powermock-api-mockito:1.6.6'
+    
+    // Netty is already provided by Minecraft 1.7.10
+    // We'll use the built-in version for networking
+}
+
+processResources {
+    // this will ensure that this task is redone when the versions change.
+    inputs.property "version", project.version
+    inputs.property "mcversion", project.minecraft.version
+
+    // replace stuff in mcmod.info, nothing else
+    from(sourceSets.main.resources.srcDirs) {
+        include 'mcmod.info'
+        
+        // replace version and mcversion
+        expand 'version':project.version, 'mcversion':project.minecraft.version
+    }
+        
+    // copy everything else except the mcmod.info
+    from(sourceSets.main.resources.srcDirs) {
+        exclude 'mcmod.info'
+    }
+}
+
+jar {
+    // Use defer evaluation to avoid configuration resolution at configuration time
+    doFirst {
+        from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    
+    // Remove signatures from dependencies
+    exclude 'META-INF/*.SF'
+    exclude 'META-INF/*.DSA'
+    exclude 'META-INF/*.RSA'
+    
+    // Add manifest information
+    manifest {
+        attributes([
+            "Specification-Title": "E4MC",
+            "Specification-Vendor": "skyevg",
+            "Specification-Version": "1",
+            "Implementation-Title": project.name,
+            "Implementation-Version": "${version}",
+            "Implementation-Vendor" :"skyevg",
+            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+            "Built-By": System.getProperty("user.name"),
+            "Built-JDK": System.getProperty("java.version"),
+            "FMLCorePlugin": "link.e4mc.E4mcMod"
+        ])
+    }
+}
+
+// Create source JAR
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+// Create dev JAR (unobfuscated)
+task devJar(type: Jar) {
+    classifier = 'dev'
+    from sourceSets.main.output
+    doFirst {
+        from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    exclude 'META-INF/*.SF'
+    exclude 'META-INF/*.DSA'
+    exclude 'META-INF/*.RSA'
+}
+
+// Add source and dev jars to artifacts
+artifacts {
+    archives sourcesJar
+    archives devJar
+}
+
+// Build task dependencies
+build.dependsOn sourcesJar, devJar

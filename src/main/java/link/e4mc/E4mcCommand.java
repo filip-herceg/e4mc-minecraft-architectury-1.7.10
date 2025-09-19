@@ -1,0 +1,77 @@
+package link.e4mc;
+
+import net.minecraft.command.CommandBase;
+import net.minecraft.command.ICommandSender;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.server.MinecraftServer;
+
+import java.util.List;
+
+public class E4mcCommand extends CommandBase {
+    
+    @Override
+    public String getCommandName() {
+        return "e4mc";
+    }
+    
+    @Override
+    public String getCommandUsage(ICommandSender sender) {
+        return "/e4mc <stop|restart>";
+    }
+    
+    @Override
+    public int getRequiredPermissionLevel() {
+        return 0; // Allow all players to use this command, we'll check permissions manually
+    }
+    
+    @Override
+    public boolean canCommandSenderUseCommand(ICommandSender sender) {
+        MinecraftServer server = MinecraftServer.getServer();
+        if (server.isDedicatedServer()) {
+            return sender.canCommandSenderUseCommand(4, getCommandName());
+        } else {
+            // In single player, only the owner can use it
+            return server.getServerOwner().equals(sender.getCommandSenderName());
+        }
+    }
+    
+    @Override
+    public void processCommand(ICommandSender sender, String[] args) {
+        if (args.length == 0) {
+            sender.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + getCommandUsage(sender)));
+            return;
+        }
+        
+        String subCommand = args[0].toLowerCase();
+        
+        if ("stop".equals(subCommand)) {
+            handleStopCommand(sender);
+        } else if ("restart".equals(subCommand)) {
+            handleRestartCommand(sender);
+        } else {
+            sender.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + getCommandUsage(sender)));
+        }
+    }
+    
+    private void handleStopCommand(ICommandSender sender) {
+        if (E4mcClient.session != null && E4mcClient.session.getState() != RelaySession.State.STOPPED) {
+            E4mcClient.session.stop();
+            sender.addChatMessage(new ChatComponentText(EnumChatFormatting.GREEN + 
+                TextHelper.translate("text.e4mc_minecraft.closeServer")));
+        } else {
+            sender.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + 
+                TextHelper.translate("text.e4mc_minecraft.serverAlreadyClosed")));
+        }
+    }
+    
+    private void handleRestartCommand(ICommandSender sender) {
+        if (E4mcClient.session != null && E4mcClient.session.getState() != RelaySession.State.STARTED) {
+            E4mcClient.session.stop();
+            E4mcClient.session = new RelaySession();
+            E4mcClient.session.startAsync();
+            sender.addChatMessage(new ChatComponentText(EnumChatFormatting.GREEN + 
+                "Restarting e4mc relay connection..."));
+        }
+    }
+}

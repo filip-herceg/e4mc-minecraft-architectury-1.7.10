@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "link.e4mc.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "minVersion": "0.7",
+  "mixins": [
+    "ConnectionMixin",
+    "PlayerListMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

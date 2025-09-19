@@ -1,0 +1,84 @@
+name: Build and Release
+
+on:
+  push:
+    branches: [ rererewrite ]
+    tags: [ 'v*' ]
+  pull_request:
+    branches: [ rererewrite ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up JDK 8
+      uses: actions/setup-java@v4
+      with:
+        java-version: '8'
+        distribution: 'temurin'
+    
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+      working-directory: ./e4mc-minecraft-architectury-1.7.10
+    
+    - name: Setup Development Workspace
+      run: ./gradlew setupDevWorkspace
+      working-directory: ./e4mc-minecraft-architectury-1.7.10
+    
+    - name: Build with Gradle
+      run: ./gradlew build
+      working-directory: ./e4mc-minecraft-architectury-1.7.10
+    
+    - name: Run tests
+      run: ./gradlew test
+      working-directory: ./e4mc-minecraft-architectury-1.7.10
+      continue-on-error: true
+    
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: e4mc-minecraft-1.7.10-${{ github.sha }}
+        path: |
+          e4mc-minecraft-architectury-1.7.10/build/libs/*.jar
+          !e4mc-minecraft-architectury-1.7.10/build/libs/*-sources.jar
+          !e4mc-minecraft-architectury-1.7.10/build/libs/*-dev.jar
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/v')
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up JDK 8
+      uses: actions/setup-java@v4
+      with:
+        java-version: '8'
+        distribution: 'temurin'
+    
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+      working-directory: ./e4mc-minecraft-architectury-1.7.10
+    
+    - name: Setup Development Workspace
+      run: ./gradlew setupDevWorkspace
+      working-directory: ./e4mc-minecraft-architectury-1.7.10
+    
+    - name: Build with Gradle
+      run: ./gradlew build
+      working-directory: ./e4mc-minecraft-architectury-1.7.10
+    
+    - name: Create Release
+      uses: softprops/action-gh-release@v2
+      with:
+        files: |
+          e4mc-minecraft-architectury-1.7.10/build/libs/e4mc_minecraft-1.7.10-*.jar
+        draft: false
+        prerelease: false
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
