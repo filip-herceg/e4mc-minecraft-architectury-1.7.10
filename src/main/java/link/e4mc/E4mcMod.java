@@ -12,29 +12,27 @@ public class E4mcMod {
     public static final String MODID = "e4mc_minecraft";
     public static final String NAME = "e4mc";
     public static final String VERSION = "5.4.1-1.7.10";
-    
+
     private static Logger logger;
     private static Config config;
-    
+
+    @SuppressWarnings("java:S2696") // Forge requires instance handler; safe to assign static refs here
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
-        static logger = event.getModLog();
+        logger = event.getModLog();
         config = new Config(event.getSuggestedConfigurationFile());
-        
-        // Register event handler
         MinecraftForge.EVENT_BUS.register(this);
     }
-    
+
     @EventHandler
     public void serverStarting(FMLServerStartingEvent event) {
-        // Register commands
         event.registerServerCommand(new E4mcCommand());
     }
-    
+
     public static Logger getLogger() {
         return logger;
     }
-    
+
     public static Config getConfig() {
         return config;
     }

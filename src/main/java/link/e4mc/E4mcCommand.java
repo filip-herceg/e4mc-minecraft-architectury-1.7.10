@@ -55,8 +55,9 @@ public class E4mcCommand extends CommandBase {
     }
     
     private void handleStopCommand(ICommandSender sender) {
-        if (E4mcClient.session != null && E4mcClient.session.getState() != RelaySession.State.STOPPED) {
-            E4mcClient.session.stop();
+        RelaySession s = E4mcClient.getSession();
+        if (s != null && s.getState() != RelaySession.State.STOPPED) {
+            s.stop();
             sender.addChatMessage(new ChatComponentText(EnumChatFormatting.GREEN + 
                 TextHelper.translate("text.e4mc_minecraft.closeServer")));
         } else {
@@ -66,12 +67,13 @@ public class E4mcCommand extends CommandBase {
     }
     
     private void handleRestartCommand(ICommandSender sender) {
-        if (E4mcClient.session != null && E4mcClient.session.getState() != RelaySession.State.STARTED) {
-            E4mcClient.session.stop();
-            E4mcClient.session = new RelaySession();
-            E4mcClient.session.startAsync();
-            sender.addChatMessage(new ChatComponentText(EnumChatFormatting.GREEN + 
-                "Restarting e4mc relay connection..."));
+        RelaySession s = E4mcClient.getSession();
+        if (s != null && s.getState() != RelaySession.State.STARTED) {
+            s.stop();
         }
+        RelaySession newSession = new RelaySession();
+        newSession.startAsync();
+        E4mcClient.setSession(newSession);
+        sender.addChatMessage(new ChatComponentText(EnumChatFormatting.GREEN + "Restarting e4mc relay connection..."));
     }
 }
