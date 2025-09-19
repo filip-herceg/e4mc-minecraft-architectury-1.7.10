@@ -8,10 +8,12 @@ import static org.junit.Assert.*;
 import java.io.File;
 import java.io.IOException;
 
+import link.e4mc.util.FilesEx;
+
 public class ConfigTest {
     private File tempConfigFile;
     private Config config;
-    
+
     /**
      * Custom exception for ConfigTest-specific errors
      */
@@ -36,7 +38,7 @@ public class ConfigTest {
     public void tearDown() throws ConfigTestException {
         if (tempConfigFile != null && tempConfigFile.exists()) {
             try {
-                java.nio.file.Files.delete(tempConfigFile.toPath());
+                FilesEx.delete(tempConfigFile.toPath());
             } catch (IOException e) {
                 throw new ConfigTestException("Failed to delete temporary config file: " + tempConfigFile.getAbsolutePath(), e);
             }
@@ -48,14 +50,14 @@ public class ConfigTest {
         config = new Config(tempConfigFile);
         
         // Test default values
-        assertTrue("useBroker should default to true", config.useBroker);
+        assertTrue("useBroker should default to true", config.isUseBroker());
         assertEquals("brokerUrl should have default value", 
-                "https://broker.e4mc.link/getBestRelay", config.brokerUrl);
+                "https://broker.e4mc.link/getBestRelay", config.getBrokerUrl());
         assertEquals("relayHost should have default value", 
-                "test.e4mc.link", config.relayHost);
-        assertEquals("relayPort should default to 25575", 25575, config.relayPort);
-        assertTrue("restoreDedicatedCommands should default to true", config.restoreDedicatedCommands);
-        assertFalse("useWhiteList should default to false", config.useWhiteList);
+                "test.e4mc.link", config.getRelayHost());
+        assertEquals("relayPort should default to 25575", 25575, config.getRelayPort());
+        assertTrue("restoreDedicatedCommands should default to true", config.isRestoreDedicatedCommands());
+        assertFalse("useWhiteList should default to false", config.isUseWhiteList());
     }
     
     @Test
@@ -71,18 +73,17 @@ public class ConfigTest {
         config = new Config(tempConfigFile);
         
         // Modify values
-        config.useBroker = false;
-        config.relayHost = "custom.relay.host";
-        config.relayPort = 12345;
-        config.saveConfig();
-        
+        config.setUseBroker(false);
+        config.setRelayHost("custom.relay.host");
+        config.setRelayPort(12345);
+
         // Create new config instance from same file
         Config loadedConfig = new Config(tempConfigFile);
         
         // Verify values were persisted
-        assertFalse("useBroker should be persisted as false", loadedConfig.useBroker);
-        assertEquals("relayHost should be persisted", "custom.relay.host", loadedConfig.relayHost);
-        assertEquals("relayPort should be persisted", 12345, loadedConfig.relayPort);
+        assertFalse("useBroker should be persisted as false", loadedConfig.isUseBroker());
+        assertEquals("relayHost should be persisted", "custom.relay.host", loadedConfig.getRelayHost());
+        assertEquals("relayPort should be persisted", 12345, loadedConfig.getRelayPort());
     }
     
     @Test
@@ -90,14 +91,14 @@ public class ConfigTest {
         config = new Config(tempConfigFile);
         
         // Test port range validation (this would be enforced by the Configuration class)
-        assertTrue("Port should be in valid range", config.relayPort >= 1 && config.relayPort <= 65535);
+        assertTrue("Port should be in valid range", config.getRelayPort() >= 1 && config.getRelayPort() <= 65535);
         
         // Test that URLs are strings
-        assertNotNull("brokerUrl should not be null", config.brokerUrl);
-        assertNotNull("relayHost should not be null", config.relayHost);
+        assertNotNull("brokerUrl should not be null", config.getBrokerUrl());
+        assertNotNull("relayHost should not be null", config.getRelayHost());
         
         // Test that broker URL is a valid format (basic check)
         assertTrue("brokerUrl should start with http", 
-                config.brokerUrl.startsWith("http://") || config.brokerUrl.startsWith("https://"));
+                config.getBrokerUrl().startsWith("http://") || config.getBrokerUrl().startsWith("https://"));
     }
 }

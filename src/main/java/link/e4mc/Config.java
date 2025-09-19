@@ -56,10 +56,57 @@ public class Config {
         }
     }
 
+    // Getters
     public boolean isUseBroker() { return useBroker; }
     public String getBrokerUrl() { return brokerUrl; }
     public String getRelayHost() { return relayHost; }
     public int getRelayPort() { return relayPort; }
     public boolean isRestoreDedicatedCommands() { return restoreDedicatedCommands; }
     public boolean isUseWhiteList() { return useWhiteList; }
+
+    // Setters that update both memory and the underlying configuration file
+    public void setUseBroker(boolean value) {
+        this.useBroker = value;
+        configuration.get(Configuration.CATEGORY_GENERAL, "useBroker", true).set(value);
+        saveConfig();
+    }
+
+    public void setBrokerUrl(String url) {
+        if (url == null || url.trim().isEmpty()) {
+            return; // ignore invalid input to keep previous value
+        }
+        this.brokerUrl = url;
+        configuration.get(Configuration.CATEGORY_GENERAL, "brokerUrl", "https://broker.e4mc.link/getBestRelay").set(url);
+        saveConfig();
+    }
+
+    public void setRelayHost(String host) {
+        if (host == null || host.trim().isEmpty()) {
+            return; // ignore invalid input to keep previous value
+        }
+        this.relayHost = host;
+        configuration.get(Configuration.CATEGORY_GENERAL, "relayHost", "test.e4mc.link").set(host);
+        saveConfig();
+    }
+
+    public void setRelayPort(int port) {
+        if (port < 1 || port > 65535) {
+            return; // ignore invalid input
+        }
+        this.relayPort = port;
+        configuration.get(Configuration.CATEGORY_GENERAL, "relayPort", 25575).set(port);
+        saveConfig();
+    }
+
+    public void setRestoreDedicatedCommands(boolean value) {
+        this.restoreDedicatedCommands = value;
+        configuration.get(Configuration.CATEGORY_GENERAL, "restoreDedicatedCommands", true).set(value);
+        saveConfig();
+    }
+
+    public void setUseWhiteList(boolean value) {
+        this.useWhiteList = value;
+        configuration.get(Configuration.CATEGORY_GENERAL, "useWhiteList", false).set(value);
+        saveConfig();
+    }
 }
