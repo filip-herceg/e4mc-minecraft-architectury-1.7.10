@@ -6,125 +6,119 @@ on:
     tags: [ 'v*' ]
   pull_request:
     branches: [ rererewrite ]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write  # needed to create releases/tags
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    
     steps:
-    - uses: actions/checkout@v4
-    
-    - name: Set up JDK 8
-      uses: actions/setup-java@v4
-      with:
-        java-version: '8'
-        distribution: 'temurin'
-    
-    # Set JAVA_HOME explicitly to avoid Gradle issues
-    - name: Set Java Home
-      run: |
-        echo "JAVA_HOME=$JAVA_HOME" >> $GITHUB_ENV
-        echo "Java version: $(java -version)"
-        echo "Java Home: $JAVA_HOME"
-    
-    # Cache Gradle dependencies to speed up builds
-    - name: Cache Gradle packages
-      uses: actions/cache@v3
-      with:
-        path: |
-          ~/.gradle/caches
-          ~/.gradle/wrapper
-        key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-        restore-keys: |
-          ${{ runner.os }}-gradle-
-    
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
-    
-    # Remove any conflicting Gradle Java home settings and use system JAVA_HOME
-    - name: Clear Gradle Java Home
-      run: |
-        # Remove any existing gradle.properties that might set org.gradle.java.home
-        if [ -f gradle.properties ]; then
-          grep -v "org.gradle.java.home" gradle.properties > gradle.properties.tmp || true
-          mv gradle.properties.tmp gradle.properties || true
-        fi
-        # Ensure JAVA_HOME is properly set
-        echo "JAVA_HOME is: $JAVA_HOME"
-        echo "Java executable: $(which java)"
-        java -version
-    
-    - name: Setup Decompiled Workspace
-      run: |
-        # Run without explicit java.home to avoid path conflicts
-        ./gradlew setupDecompWorkspace --no-daemon --console=plain --stacktrace
-      env:
-        JAVA_HOME: ${{ env.JAVA_HOME }}
-    
-    - name: Build with Gradle
-      run: |
-        # Run build without conflicting java home settings
-        ./gradlew build --no-daemon --console=plain --stacktrace
-      env:
-        JAVA_HOME: ${{ env.JAVA_HOME }}
-      continue-on-error: true  # Continue even if build fails due to code issues
-    
-    - name: Upload build artifacts
-      uses: actions/upload-artifact@v4
-      if: always()  # Upload artifacts even if build had issues
-      with:
-        name: e4mc-minecraft-1.7.10-${{ github.sha }}
-        path: |
-          build/libs/*.jar
-        retention-days: 30
+      - uses: actions/checkout@v4
+
+      - name: Set up JDK 8
+        uses: actions/setup-java@v4
+        with:
+          java-version: '8'
+          distribution: 'temurin'
+
+      - name: Cache Gradle packages
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Clear Gradle Java Home
+        run: |
+          if [ -f gradle.properties ]; then
+            grep -v "org.gradle.java.home" gradle.properties > gradle.properties.tmp || true
+            mv gradle.properties.tmp gradle.properties || true
+          fi
+          echo "JAVA_HOME is: $JAVA_HOME"
+          echo "Java executable: $(which java)"
+          java -version
+
+      - name: Setup Decompiled Workspace
+        run: ./gradlew setupDecompWorkspace --no-daemon --console=plain --stacktrace
+
+      - name: Build with Gradle
+        run: ./gradlew build --no-daemon --console=plain --stacktrace
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: e4mc-minecraft-1.7.10-${{ github.sha }}
+          path: |
+            **/build/libs/*.jar
+          retention-days: 15
 
   release:
     needs: build
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/v')
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    - name: Download build artifacts
-      uses: actions/download-artifact@v4
-      with:
-        name: e4mc-minecraft-1.7.10-${{ github.sha }}
-        path: artifacts
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: e4mc-minecraft-1.7.10-${{ github.sha }}
+          path: artifacts
 
-    - name: Create Release (tagged)
-      uses: softprops/action-gh-release@v2
-      with:
-        files: |
-          artifacts/**/*.jar
-        draft: false
-        generate_release_notes: true
-        name: "E4MC Minecraft 1.7.10 - ${{ github.ref_name }}"
-        prerelease: false
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create Release (tagged)
+        uses: softprops/action-gh-release@v2
+        with:
+          files: artifacts/**/*.jar
+          draft: false
+          generate_release_notes: true
+          name: "E4MC Minecraft 1.7.10 - ${{ github.ref_name }}"
+          prerelease: false
+          make_latest: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   nightly:
     needs: build
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/rererewrite'
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-    - name: Download build artifacts
-      uses: actions/download-artifact@v4
-      with:
-        name: e4mc-minecraft-1.7.10-${{ github.sha }}
-        path: artifacts
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: e4mc-minecraft-1.7.10-${{ github.sha }}
+          path: artifacts
 
-    - name: Create/Update Nightly Pre-release
-      uses: softprops/action-gh-release@v2
-      with:
-        tag_name: nightly
-        name: "E4MC Minecraft 1.7.10 - Nightly"
-        prerelease: true
-        draft: false
-        files: |
-          artifacts/**/*.jar
-        make_latest: false
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Ensure nightly tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # Create or move the 'nightly' tag to this commit and push forcefully
+          git tag -f nightly "${GITHUB_SHA}"
+          git push -f origin refs/tags/nightly
+
+      - name: Publish Nightly Pre-release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: nightly
+          target_commitish: ${{ github.sha }}
+          name: "E4MC Minecraft 1.7.10 - Nightly"
+          prerelease: true
+          draft: false
+          files: artifacts/**/*.jar
+          make_latest: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
