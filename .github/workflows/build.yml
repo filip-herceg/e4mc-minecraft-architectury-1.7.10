@@ -41,14 +41,31 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     
+    # Remove any conflicting Gradle Java home settings and use system JAVA_HOME
+    - name: Clear Gradle Java Home
+      run: |
+        # Remove any existing gradle.properties that might set org.gradle.java.home
+        if [ -f gradle.properties ]; then
+          grep -v "org.gradle.java.home" gradle.properties > gradle.properties.tmp || true
+          mv gradle.properties.tmp gradle.properties || true
+        fi
+        # Ensure JAVA_HOME is properly set
+        echo "JAVA_HOME is: $JAVA_HOME"
+        echo "Java executable: $(which java)"
+        java -version
+    
     # Use setupDecompWorkspace instead of setupDevWorkspace for better compatibility
     - name: Setup Decompiled Workspace
-      run: ./gradlew setupDecompWorkspace --no-daemon --console=plain
+      run: |
+        # Run without explicit java.home to avoid path conflicts
+        ./gradlew setupDecompWorkspace --no-daemon --console=plain --stacktrace
       env:
         JAVA_HOME: ${{ env.JAVA_HOME }}
     
     - name: Build with Gradle
-      run: ./gradlew build --no-daemon --console=plain
+      run: |
+        # Run build without conflicting java home settings
+        ./gradlew build --no-daemon --console=plain --stacktrace
       env:
         JAVA_HOME: ${{ env.JAVA_HOME }}
       continue-on-error: true  # Continue even if build fails due to code issues
