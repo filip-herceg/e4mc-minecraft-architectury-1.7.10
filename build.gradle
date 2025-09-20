@@ -124,8 +124,7 @@ jar {
             "Implementation-Vendor" :"skyevg",
             "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
             "Built-By": System.getProperty("user.name"),
-            "Built-JDK": System.getProperty("java.version"),
-            "FMLCorePlugin": "link.e4mc.E4mcMod"
+            "Built-JDK": System.getProperty("java.version")
         ])
     }
 }

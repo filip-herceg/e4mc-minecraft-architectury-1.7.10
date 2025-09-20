@@ -5,10 +5,10 @@
     "description": "Open a LAN server to anyone, anywhere, anytime.",
     "version": "${version}",
     "mcversion": "${mcversion}",
-    "url": "",
+    "url": "https://github.com/filip-herceg/e4mc-minecraft-architectury-1.7.10",
     "updateUrl": "",
-    "authorList": ["skyevg"],
-    "credits": "skyevg",
+    "authorList": ["skyevg", "filip-herceg"],
+    "credits": "Original project by skyevg. 1.7.10 port by contributors.",
     "logoFile": "",
     "screenshots": [],
     "dependencies": []
