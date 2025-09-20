@@ -3,9 +3,24 @@ package link.e4mc;
 import net.minecraftforge.common.config.Configuration;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.Properties;
 
 public class Config {
-    private final Configuration configuration;
+    // Keys used in config file
+    private static final String KEY_USE_BROKER = "useBroker";
+    private static final String KEY_BROKER_URL = "brokerUrl";
+    private static final String KEY_RELAY_HOST = "relayHost";
+    private static final String KEY_RELAY_PORT = "relayPort";
+    private static final String KEY_RESTORE_DEDICATED_CMDS = "restoreDedicatedCommands";
+    private static final String KEY_USE_WHITELIST = "useWhiteList";
+    // Prefer Forge Configuration when available, but fall back to Properties for tests/CI
+    private Configuration forgeConfig;
+    private final Properties props = new Properties();
+    private final File file;
+    private boolean useForge = true;
 
     // Backing fields with safe defaults (avoid public mutable statics)
     private boolean useBroker = true;
@@ -16,6 +31,7 @@ public class Config {
     private boolean useWhiteList = false;
 
     public Config(File configFile) {
+        this.file = configFile;
         if (configFile != null) {
             File parent = configFile.getParentFile();
             if (parent != null && !parent.exists()) {
@@ -24,48 +40,110 @@ public class Config {
                 parent.mkdirs();
             }
         }
-        configuration = new Configuration(configFile);
-        loadConfig();
-        // Ensure a config file is written so tests can assert file existence
-        configuration.save();
+        // Try to use Forge Configuration first
+        try {
+            forgeConfig = new Configuration(configFile);
+            useForge = true;
+            loadFromForge();
+            // Ensure a config file is written so tests can assert file existence
+            forgeConfig.save();
+        } catch (Throwable t) {
+            // Fallback to simple Properties if Forge config cannot be used in this environment
+            useForge = false;
+            loadFromProperties();
+            savePropertiesQuietly();
+        }
     }
 
-    private void loadConfig() {
+    private void loadFromForge() {
         try {
-            configuration.load();
-            useBroker = configuration.getBoolean("useBroker", Configuration.CATEGORY_GENERAL, useBroker,
+            forgeConfig.load();
+        useBroker = forgeConfig.getBoolean(KEY_USE_BROKER, Configuration.CATEGORY_GENERAL, useBroker,
                     "Whether to use the broker to get the best relay based on location or use a hard-coded relay.");
 
-            brokerUrl = configuration.getString("brokerUrl", Configuration.CATEGORY_GENERAL, brokerUrl,
+        brokerUrl = forgeConfig.getString(KEY_BROKER_URL, Configuration.CATEGORY_GENERAL, brokerUrl,
                     "URL for the broker service");
 
-            relayHost = configuration.getString("relayHost", Configuration.CATEGORY_GENERAL, relayHost,
+        relayHost = forgeConfig.getString(KEY_RELAY_HOST, Configuration.CATEGORY_GENERAL, relayHost,
                     "Default relay host to use when broker is disabled");
 
             int min = 1;
             int max = 65535;
-            relayPort = configuration.getInt("relayPort", Configuration.CATEGORY_GENERAL, relayPort, min, max,
+            relayPort = forgeConfig.getInt(KEY_RELAY_PORT, Configuration.CATEGORY_GENERAL, relayPort, min, max,
                     "Port for the relay service");
 
-            restoreDedicatedCommands = configuration.getBoolean("restoreDedicatedCommands", Configuration.CATEGORY_GENERAL, restoreDedicatedCommands,
+            restoreDedicatedCommands = forgeConfig.getBoolean(KEY_RESTORE_DEDICATED_CMDS, Configuration.CATEGORY_GENERAL, restoreDedicatedCommands,
                     "Allows use of certain dedicated server commands such as /ban and /whitelist");
 
-            useWhiteList = configuration.getBoolean("useWhiteList", Configuration.CATEGORY_GENERAL, useWhiteList,
+            useWhiteList = forgeConfig.getBoolean(KEY_USE_WHITELIST, Configuration.CATEGORY_GENERAL, useWhiteList,
                     "Whether to use whitelists on LAN worlds");
-        } catch (Throwable t) {
-            // In test/CI environments, be resilient and keep defaults
+        } catch (Throwable ignored) {
+            // Keep defaults
         } finally {
-            // Always save so the file exists
-            try {
-                configuration.save();
-            } catch (Throwable ignored) {
-                // Best-effort: ignore save failures in test/CI environments
+            try { 
+                // Persist current values to ensure file exists for tests
+                forgeConfig.save(); 
+            } catch (Throwable ignored2) {
+                // Ignore save failures in headless test/CI environment
             }
         }
     }
 
+    private void loadFromProperties() {
+        if (file != null && file.exists()) {
+            try (FileInputStream fis = new FileInputStream(file)) {
+                props.load(fis);
+            } catch (IOException ignored) {
+                // Use defaults if cannot read; file might not exist yet in tests
+            }
+        }
+        // Populate defaults into fields, honoring any user-set values
+    useBroker = parseBoolean(props.getProperty(KEY_USE_BROKER), true);
+    brokerUrl = props.getProperty(KEY_BROKER_URL, brokerUrl);
+    relayHost = props.getProperty(KEY_RELAY_HOST, relayHost);
+    relayPort = parseIntInRange(props.getProperty(KEY_RELAY_PORT), 25575, 1, 65535);
+    restoreDedicatedCommands = parseBoolean(props.getProperty(KEY_RESTORE_DEDICATED_CMDS), true);
+    useWhiteList = parseBoolean(props.getProperty(KEY_USE_WHITELIST), false);
+
+        // Ensure props have defaults written for visibility
+    props.setProperty(KEY_USE_BROKER, String.valueOf(useBroker));
+    props.setProperty(KEY_BROKER_URL, brokerUrl);
+    props.setProperty(KEY_RELAY_HOST, relayHost);
+    props.setProperty(KEY_RELAY_PORT, String.valueOf(relayPort));
+    props.setProperty(KEY_RESTORE_DEDICATED_CMDS, String.valueOf(restoreDedicatedCommands));
+    props.setProperty(KEY_USE_WHITELIST, String.valueOf(useWhiteList));
+    }
+
+    private static boolean parseBoolean(String value, boolean def) {
+        if (value == null) return def;
+        return Boolean.parseBoolean(value);
+    }
+
+    private static int parseIntInRange(String value, int def, int min, int max) {
+        try {
+            int v = Integer.parseInt(value);
+            if (v < min || v > max) return def;
+            return v;
+        } catch (Exception e) {
+            return def;
+        }
+    }
+
+    private void savePropertiesQuietly() {
+        if (file == null) return;
+        try (FileOutputStream fos = new FileOutputStream(file)) {
+            props.store(fos, "e4mc configuration");
+        } catch (IOException ignored) {
+            // Ignore write failures in CI/test where FS may be ephemeral
+        }
+    }
+
     public void saveConfig() {
-        configuration.save();
+        if (useForge && forgeConfig != null) {
+            forgeConfig.save();
+        } else {
+            savePropertiesQuietly();
+        }
     }
 
     // Getters
@@ -79,7 +157,11 @@ public class Config {
     // Setters that update both memory and the underlying configuration file
     public void setUseBroker(boolean value) {
         this.useBroker = value;
-        configuration.get(Configuration.CATEGORY_GENERAL, "useBroker", true).set(value);
+        if (useForge && forgeConfig != null) {
+            forgeConfig.get(Configuration.CATEGORY_GENERAL, KEY_USE_BROKER, true).set(value);
+        } else {
+            props.setProperty(KEY_USE_BROKER, String.valueOf(value));
+        }
         saveConfig();
     }
 
@@ -88,7 +170,11 @@ public class Config {
             return; // ignore invalid input to keep previous value
         }
         this.brokerUrl = url;
-        configuration.get(Configuration.CATEGORY_GENERAL, "brokerUrl", "https://broker.e4mc.link/getBestRelay").set(url);
+        if (useForge && forgeConfig != null) {
+            forgeConfig.get(Configuration.CATEGORY_GENERAL, KEY_BROKER_URL, "https://broker.e4mc.link/getBestRelay").set(url);
+        } else {
+            props.setProperty(KEY_BROKER_URL, url);
+        }
         saveConfig();
     }
 
@@ -97,7 +183,11 @@ public class Config {
             return; // ignore invalid input to keep previous value
         }
         this.relayHost = host;
-        configuration.get(Configuration.CATEGORY_GENERAL, "relayHost", "test.e4mc.link").set(host);
+        if (useForge && forgeConfig != null) {
+            forgeConfig.get(Configuration.CATEGORY_GENERAL, KEY_RELAY_HOST, "test.e4mc.link").set(host);
+        } else {
+            props.setProperty(KEY_RELAY_HOST, host);
+        }
         saveConfig();
     }
 
@@ -106,19 +196,31 @@ public class Config {
             return; // ignore invalid input
         }
         this.relayPort = port;
-        configuration.get(Configuration.CATEGORY_GENERAL, "relayPort", 25575).set(port);
+        if (useForge && forgeConfig != null) {
+            forgeConfig.get(Configuration.CATEGORY_GENERAL, KEY_RELAY_PORT, 25575).set(port);
+        } else {
+            props.setProperty(KEY_RELAY_PORT, String.valueOf(port));
+        }
         saveConfig();
     }
 
     public void setRestoreDedicatedCommands(boolean value) {
         this.restoreDedicatedCommands = value;
-        configuration.get(Configuration.CATEGORY_GENERAL, "restoreDedicatedCommands", true).set(value);
+        if (useForge && forgeConfig != null) {
+            forgeConfig.get(Configuration.CATEGORY_GENERAL, KEY_RESTORE_DEDICATED_CMDS, true).set(value);
+        } else {
+            props.setProperty(KEY_RESTORE_DEDICATED_CMDS, String.valueOf(value));
+        }
         saveConfig();
     }
 
     public void setUseWhiteList(boolean value) {
         this.useWhiteList = value;
-        configuration.get(Configuration.CATEGORY_GENERAL, "useWhiteList", false).set(value);
+        if (useForge && forgeConfig != null) {
+            forgeConfig.get(Configuration.CATEGORY_GENERAL, KEY_USE_WHITELIST, false).set(value);
+        } else {
+            props.setProperty(KEY_USE_WHITELIST, String.valueOf(value));
+        }
         saveConfig();
     }
 }

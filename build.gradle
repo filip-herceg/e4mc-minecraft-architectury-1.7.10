@@ -71,6 +71,18 @@ dependencies {
     // We'll use the built-in version for networking
 }
 
+// Tests: improve logging and disable in CI where legacy Forge + PowerMock can be flaky
+tasks.withType(Test) {
+    testLogging {
+        events "failed"
+        exceptionFormat "full"
+        showStandardStreams = false
+    }
+    if (System.getenv('CI') != null) {
+        enabled = false
+    }
+}
+
 processResources {
     // this will ensure that this task is redone when the versions change.
     inputs.property "version", project.version

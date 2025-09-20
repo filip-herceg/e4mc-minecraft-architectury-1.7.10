@@ -31,7 +31,7 @@ public class TextHelperTest {
     public void testTranslateWithArgs() {
         // Test that TextHelper.translate with args can be called
         String[] args = {"test"};
-        String result = TextHelper.translate(TEST_KEY, args);
+        String result = TextHelper.translate(TEST_KEY, (Object[]) args);
         
         assertNotNull("Translate with args should not return null", result);
     }
@@ -45,7 +45,7 @@ public class TextHelperTest {
     
     @Test
     public void testTranslateWithNullArgs() {
-        String result = TextHelper.translate(TEST_KEY, (String[]) null);
+        String result = TextHelper.translate(TEST_KEY, (Object[]) null);
         assertNotNull("Should handle null args gracefully", result);
     }
 }

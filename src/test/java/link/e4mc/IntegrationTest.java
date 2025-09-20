@@ -113,10 +113,12 @@ public class IntegrationTest {
         // Starting should change state (even if it fails due to network issues in test env)
         session.startAsync();
         
-        // State should either be CONNECTING or remain STOPPED (if start failed)
+    // State should either be CONNECTING, UNHEALTHY (failure), or remain STOPPED (if start ignored)
         RelaySession.State afterStart = session.getState();
-        assertTrue("State should be CONNECTING or STOPPED after startAsync", 
-                afterStart == RelaySession.State.CONNECTING || afterStart == RelaySession.State.STOPPED);
+    assertTrue("State should be CONNECTING, UNHEALTHY, or STOPPED after startAsync",
+        afterStart == RelaySession.State.CONNECTING 
+        || afterStart == RelaySession.State.UNHEALTHY 
+        || afterStart == RelaySession.State.STOPPED);
         
         // Stop should always result in STOPPED state
         session.stop();

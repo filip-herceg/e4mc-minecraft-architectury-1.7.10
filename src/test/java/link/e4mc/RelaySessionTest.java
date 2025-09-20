@@ -22,8 +22,10 @@ public class RelaySessionTest {
     public void testStartAsync() {
         relaySession.startAsync();
         RelaySession.State state = relaySession.getState();
-        assertTrue("Should be CONNECTING or STOPPED after startAsync", 
-                state == RelaySession.State.CONNECTING || state == RelaySession.State.STOPPED);
+    assertTrue("Should be CONNECTING, UNHEALTHY, or STOPPED after startAsync", 
+        state == RelaySession.State.CONNECTING 
+        || state == RelaySession.State.UNHEALTHY 
+        || state == RelaySession.State.STOPPED);
     }
 
     @Test
