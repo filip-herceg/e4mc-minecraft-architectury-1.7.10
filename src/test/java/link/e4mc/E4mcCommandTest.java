@@ -35,7 +35,7 @@ public class E4mcCommandTest {
     @Test
     public void testGetCommandUsage() {
         String usage = command.getCommandUsage(mockSender);
-        assertEquals("Usage should show available subcommands", "/e4mc <stop|restart>", usage);
+        assertEquals("Usage should show available subcommands", "/e4mc <start|stop|restart>", usage);
     }
     
     @Test
