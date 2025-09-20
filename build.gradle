@@ -78,9 +78,6 @@ tasks.withType(Test) {
         exceptionFormat "full"
         showStandardStreams = false
     }
-    if (System.getenv('CI') != null) {
-        enabled = false
-    }
 }
 
 processResources {

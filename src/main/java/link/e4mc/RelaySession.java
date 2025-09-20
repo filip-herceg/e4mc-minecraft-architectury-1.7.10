@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.*;
+import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -48,7 +49,10 @@ public class RelaySession {
                 addChatMessage(EnumChatFormatting.RED + "Failed to get relay information");
                 return;
             }
-            relaySocket = new Socket(relayInfo.getHost(), relayInfo.getPort());
+            Socket s = new Socket();
+            s.connect(new InetSocketAddress(relayInfo.getHost(), relayInfo.getPort()), 5000);
+            s.setSoTimeout(10000);
+            relaySocket = s;
             state = State.STARTED;
             addChatMessage(EnumChatFormatting.GREEN + "Connected to relay: " + relayInfo.getId());
             Thread readerThread = new Thread(this::handleIncomingData, "e4mc-relay-reader");
@@ -94,15 +98,76 @@ public class RelaySession {
 
     private BrokerResponse getBrokerInfo() {
         try {
-            BrokerResponse response = new BrokerResponse();
-            response.setId("test-relay");
-            response.setHost("localhost");
-            response.setPort(25565);
-            return response;
+            Config cfg = E4mcMod.getConfig();
+            if (cfg == null) {
+                BrokerResponse r = new BrokerResponse();
+                r.setId("default");
+                r.setHost("127.0.0.1");
+                r.setPort(25565);
+                return r;
+            }
+
+            if (cfg.isUseBroker()) {
+                String url = cfg.getBrokerUrl();
+                String body = Http.get(url, 3000);
+                BrokerResponse r = parseBrokerResponse(body);
+                if (r != null) return r;
+                LOGGER.warn("Broker response invalid, falling back to configured relay host/port");
+            }
+
+            BrokerResponse r = new BrokerResponse();
+            r.setId("configured");
+            r.setHost(cfg.getRelayHost());
+            r.setPort(cfg.getRelayPort());
+            return r;
         } catch (Exception e) {
             LOGGER.error("Failed to get broker info", e);
             return null;
         }
+    }
+
+    private BrokerResponse parseBrokerResponse(String json) {
+        if (json == null || json.trim().isEmpty()) return null;
+        try {
+            String s = json.replace('\n', ' ').replace('\r', ' ').trim();
+            BrokerResponse r = new BrokerResponse();
+            String id = extractJsonString(s, "\"id\"");
+            String host = extractJsonString(s, "\"host\"");
+            Integer port = extractJsonInt(s, "\"port\"");
+            if (host == null || port == null) return null;
+            r.setId(id != null ? id : "");
+            r.setHost(host);
+            r.setPort(port);
+            return r;
+        } catch (Exception e) {
+            LOGGER.warn("Failed to parse broker response: {}", e.toString());
+            return null;
+        }
+    }
+
+    private static String extractJsonString(String src, String key) {
+        int i = src.indexOf(key);
+        if (i < 0) return null;
+        int colon = src.indexOf(':', i + key.length());
+        if (colon < 0) return null;
+        int q1 = src.indexOf('"', colon + 1);
+        if (q1 < 0) return null;
+        int q2 = src.indexOf('"', q1 + 1);
+        if (q2 < 0) return null;
+        return src.substring(q1 + 1, q2);
+    }
+
+    private static Integer extractJsonInt(String src, String key) {
+        int i = src.indexOf(key);
+        if (i < 0) return null;
+        int colon = src.indexOf(':', i + key.length());
+        if (colon < 0) return null;
+        int start = colon + 1;
+        while (start < src.length() && Character.isWhitespace(src.charAt(start))) start++;
+        int end = start;
+        while (end < src.length() && Character.isDigit(src.charAt(end))) end++;
+        if (end == start) return null;
+        try { return Integer.parseInt(src.substring(start, end)); } catch (NumberFormatException e) { return null; }
     }
 
     private void addChatMessage(String message) {
@@ -126,5 +191,37 @@ public class RelaySession {
         public void setHost(String host) { this.host = host; }
         public int getPort() { return port; }
         public void setPort(int port) { this.port = port; }
+    }
+
+    // Minimal HTTP utility to fetch broker JSON using JRE classes
+    private static final class Http {
+        static String get(String url, int timeoutMs) throws IOException {
+            java.net.URL u = new java.net.URL(url);
+            java.net.URLConnection c = u.openConnection();
+            if (c instanceof java.net.HttpURLConnection) {
+                java.net.HttpURLConnection h = (java.net.HttpURLConnection) c;
+                h.setConnectTimeout(timeoutMs);
+                h.setReadTimeout(timeoutMs);
+                h.setRequestMethod("GET");
+                h.setRequestProperty("Accept", "application/json");
+                int code = h.getResponseCode();
+                InputStream is = (code >= 200 && code < 300) ? h.getInputStream() : h.getErrorStream();
+                if (is == null) return null;
+                try (BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
+                    StringBuilder sb = new StringBuilder();
+                    String line;
+                    while ((line = br.readLine()) != null) sb.append(line).append('\n');
+                    return sb.toString();
+                }
+            } else {
+                try (InputStream is = c.getInputStream();
+                     BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
+                    StringBuilder sb = new StringBuilder();
+                    String line;
+                    while ((line = br.readLine()) != null) sb.append(line).append('\n');
+                    return sb.toString();
+                }
+            }
+        }
     }
 }

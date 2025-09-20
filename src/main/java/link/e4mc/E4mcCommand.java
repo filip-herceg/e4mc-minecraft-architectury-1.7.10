@@ -17,7 +17,7 @@ public class E4mcCommand extends CommandBase {
     
     @Override
     public String getCommandUsage(ICommandSender sender) {
-        return "/e4mc <stop|restart>";
+        return "/e4mc <start|stop|restart>";
     }
     
     @Override
@@ -55,6 +55,8 @@ public class E4mcCommand extends CommandBase {
             handleStopCommand(sender);
         } else if ("restart".equals(subCommand)) {
             handleRestartCommand(sender);
+        } else if ("start".equals(subCommand)) {
+            handleStartCommand(sender);
         } else {
             sender.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + getCommandUsage(sender)));
         }
@@ -81,5 +83,19 @@ public class E4mcCommand extends CommandBase {
         newSession.startAsync();
         E4mcClient.setSession(newSession);
         sender.addChatMessage(new ChatComponentText(EnumChatFormatting.GREEN + "Restarting e4mc relay connection..."));
+    }
+
+    private void handleStartCommand(ICommandSender sender) {
+        RelaySession s = E4mcClient.getSession();
+        if (s == null) {
+            s = new RelaySession();
+            E4mcClient.setSession(s);
+        }
+        if (s.getState() == RelaySession.State.STOPPED) {
+            s.startAsync();
+            sender.addChatMessage(new ChatComponentText(EnumChatFormatting.GREEN + "Starting e4mc relay connection..."));
+        } else {
+            sender.addChatMessage(new ChatComponentText(EnumChatFormatting.RED + TextHelper.translate("text.e4mc_minecraft.serverAlreadyOpen")));
+        }
     }
 }
