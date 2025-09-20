@@ -5,7 +5,9 @@ import org.junit.Test;
 import java.io.File;
 
 import static org.junit.Assert.*;
-    
+
+public class IntegrationTest {
+
     @Test
     public void testModInitialization() {
         // Test that the main mod class can be instantiated
@@ -61,26 +63,26 @@ import static org.junit.Assert.*;
     @Test
     public void testComponentIntegration() {
         // Test that all main components can work together
-    E4mcMod mod = new E4mcMod();
-    File tmp = new File("build/tmp/test-config.cfg");
-    tmp.getParentFile().mkdirs();
-    Config config = new Config(tmp);
-    E4mcCommand command = new E4mcCommand();
-    RelaySession session = new RelaySession();
+        E4mcMod mod = new E4mcMod();
+        File tmp = new File("build/tmp/test-config.cfg");
+        tmp.getParentFile().mkdirs();
+        Config config = new Config(tmp);
+        E4mcCommand command = new E4mcCommand();
+        RelaySession session = new RelaySession();
         
         // Verify all components are properly initialized
         assertNotNull("Mod should be ready", mod);
         assertNotNull("Config should be ready", config);
         assertNotNull("Command should be ready", command);
-    assertNotNull("Session should be ready", session);
+        assertNotNull("Session should be ready", session);
     }
     
     @Test
     public void testConfigPersistence() {
         // Test that config can handle save/load operations without errors
-    File tmp = new File("build/tmp/test-config.cfg");
-    tmp.getParentFile().mkdirs();
-    Config config = new Config(tmp);
+        File tmp = new File("build/tmp/test-config.cfg");
+        tmp.getParentFile().mkdirs();
+        Config config = new Config(tmp);
         
         // Test that save doesn't crash (even though file operations might fail in test env)
         try {
@@ -103,7 +105,7 @@ import static org.junit.Assert.*;
     
     @Test
     public void testSessionStateTransitions() {
-    RelaySession session = new RelaySession();
+        RelaySession session = new RelaySession();
         
         // Initial state
         assertEquals("Should start in STOPPED state", RelaySession.State.STOPPED, session.getState());
@@ -111,10 +113,10 @@ import static org.junit.Assert.*;
         // Starting should change state (even if it fails due to network issues in test env)
         session.startAsync();
         
-    // State should either be CONNECTING or remain STOPPED (if start failed)
+        // State should either be CONNECTING or remain STOPPED (if start failed)
         RelaySession.State afterStart = session.getState();
-    assertTrue("State should be CONNECTING or STOPPED after startAsync", 
-        afterStart == RelaySession.State.CONNECTING || afterStart == RelaySession.State.STOPPED);
+        assertTrue("State should be CONNECTING or STOPPED after startAsync", 
+                afterStart == RelaySession.State.CONNECTING || afterStart == RelaySession.State.STOPPED);
         
         // Stop should always result in STOPPED state
         session.stop();
