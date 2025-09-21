@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Տեղային խաղը հոսթինգված է [%s] դոմեյնում
+text.e4mc_minecraft.closeServer=Տեղային խաղը այլևս հանրային հոսթինգով չէ
+text.e4mc_minecraft.serverAlreadyClosed=Տեղային խաղը հանրային հոսթինգով չէ
+text.e4mc_minecraft.clickToStop= (Սեղմեք այստեղ կանգնեցնելու համար)
+text.e4mc_minecraft.error=e4mc-ում տեղի ունեցավ սխալ
+text.e4mc_minecraft.serverAlreadyOpen=Տեղային խաղը արդեն հանրային հոսթինգով է
+text.e4mc_minecraft.status.noSession=Դեռ սեսիա չկա։ Օգտագործեք /e4mc start։
+text.e4mc_minecraft.status.line=Վիճակ=%s, միջոցով=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Վերջին սխալը՝ %s
+text.e4mc_minecraft.status.broker=Բրոքեր՝ %s (HTTP %s) պատասխան՝ %s
+text.e4mc_minecraft.debug.enabled=Ախտորոշումը միացված է
+text.e4mc_minecraft.debug.disabled=Ախտորոշումը անջատված է
+text.e4mc_minecraft.debug.status=Աղեղային ռեժիմը %s է
+text.e4mc_minecraft.debug.usage=Օգտագործում՝ /e4mc debug <on|off|status>

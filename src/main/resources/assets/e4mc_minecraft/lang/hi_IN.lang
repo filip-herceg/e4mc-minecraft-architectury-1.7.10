@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=स्थानीय खेल डोमेन [%s] पर होस्ट किया गया है
+text.e4mc_minecraft.closeServer=स्थानीय खेल अब सार्वजनिक रूप से होस्ट नहीं किया गया है
+text.e4mc_minecraft.serverAlreadyClosed=स्थानीय खेल सार्वजनिक रूप से होस्ट नहीं किया गया है
+text.e4mc_minecraft.clickToStop= (रोकने के लिए यहाँ क्लिक करें)
+text.e4mc_minecraft.error=e4mc में एक त्रुटि हुई
+text.e4mc_minecraft.serverAlreadyOpen=स्थानीय खेल पहले से ही सार्वजनिक रूप से होस्ट किया गया है
+text.e4mc_minecraft.status.noSession=अभी तक कोई सत्र नहीं है। /e4mc start का उपयोग करें।
+text.e4mc_minecraft.status.line=स्थिति=%s, माध्यम=%s, आईडी=%s, %s:%s
+text.e4mc_minecraft.status.lastError=अंतिम त्रुटि: %s
+text.e4mc_minecraft.status.broker=ब्रोकर: %s (HTTP %s) प्रतिक्रिया: %s
+text.e4mc_minecraft.debug.enabled=डायग्नोस्टिक्स सक्षम
+text.e4mc_minecraft.debug.disabled=डायग्नोस्टिक्स अक्षम
+text.e4mc_minecraft.debug.status=डीबग %s है
+text.e4mc_minecraft.debug.usage=उपयोग: /e4mc debug <on|off|status>

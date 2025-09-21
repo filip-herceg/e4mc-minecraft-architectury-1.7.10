@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Лакальная гульня размешчана на дамене [%s]
+text.e4mc_minecraft.closeServer=Лакальная гульня больш не размяшчаецца публічна
+text.e4mc_minecraft.serverAlreadyClosed=Лакальная гульня не размяшчаецца публічна
+text.e4mc_minecraft.clickToStop= (Націсніце тут, каб спыніць)
+text.e4mc_minecraft.error=У e4mc адбылася памылка
+text.e4mc_minecraft.serverAlreadyOpen=Лакальная гульня ўжо размяшчаецца публічна
+text.e4mc_minecraft.status.noSession=Сеансу яшчэ няма. Выкарыстоўвайце /e4mc start.
+text.e4mc_minecraft.status.line=Стан=%s, праз=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Апошняя памылка: %s
+text.e4mc_minecraft.status.broker=Брокер: %s (HTTP %s) адказ: %s
+text.e4mc_minecraft.debug.enabled=Дыягностыка ўключана
+text.e4mc_minecraft.debug.disabled=Дыягностыка выключана
+text.e4mc_minecraft.debug.status=Адладка — %s
+text.e4mc_minecraft.debug.usage=Выкарыстанне: /e4mc debug <on|off|status>

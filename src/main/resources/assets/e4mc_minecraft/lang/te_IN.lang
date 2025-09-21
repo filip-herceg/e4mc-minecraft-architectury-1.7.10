@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=లోకల్ గేమ్ [%s] డొమైన్‌లో హోస్ట్ చేయబడింది
+text.e4mc_minecraft.closeServer=లోకల్ గేమ్ ఇకపై పబ్లిక్‌గా హోస్ట్ చేయబడదు
+text.e4mc_minecraft.serverAlreadyClosed=లోకల్ గేమ్ పబ్లిక్‌గా హోస్ట్ చేయబడదు
+text.e4mc_minecraft.clickToStop= (ఆపడానికి ఇక్కడ క్లిక్ చేయండి)
+text.e4mc_minecraft.error=e4mc లో ఒక తప్పు జరిగింది
+text.e4mc_minecraft.serverAlreadyOpen=లోకల్ గేమ్ ఇప్పటికే పబ్లిక్‌గా హోస్ట్ చేయబడింది
+text.e4mc_minecraft.status.noSession=ఇంకా సెషన్ లేదు. /e4mc start ను ఉపయోగించండి.
+text.e4mc_minecraft.status.line=స్థితి=%s, ద్వారా=%s, ఐడి=%s, %s:%s
+text.e4mc_minecraft.status.lastError=చివరి లోపం: %s
+text.e4mc_minecraft.status.broker=బ్రోకర్: %s (HTTP %s) ప్రతిస్పందన: %s
+text.e4mc_minecraft.debug.enabled=డయాగ్నొస్టిక్స్ ప్రారంభించబడ్డాయి
+text.e4mc_minecraft.debug.disabled=డయాగ్నొస్టిక్స్ నిలిపివేయబడ్డాయి
+text.e4mc_minecraft.debug.status=డీబగ్ %s ఉంది
+text.e4mc_minecraft.debug.usage=వాడుక: /e4mc debug <on|off|status>

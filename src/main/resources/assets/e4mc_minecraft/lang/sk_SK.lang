@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Miestna hra je hostovaná na doméne [%s]
+text.e4mc_minecraft.closeServer=Miestna hra už nie je verejne hostovaná
+text.e4mc_minecraft.serverAlreadyClosed=Miestna hra nie je verejne hostovaná
+text.e4mc_minecraft.clickToStop= (Kliknite sem pre zastavenie)
+text.e4mc_minecraft.error=V e4mc došlo k chybe
+text.e4mc_minecraft.serverAlreadyOpen=Miestna hra je už verejne hostovaná
+text.e4mc_minecraft.status.noSession=Zatiaľ žiadna relácia. Použite /e4mc start.
+text.e4mc_minecraft.status.line=Stav=%s, cez=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Posledná chyba: %s
+text.e4mc_minecraft.status.broker=Maklér: %s (HTTP %s) odpoveď: %s
+text.e4mc_minecraft.debug.enabled=Diagnostika zapnutá
+text.e4mc_minecraft.debug.disabled=Diagnostika vypnutá
+text.e4mc_minecraft.debug.status=Ladenie je %s
+text.e4mc_minecraft.debug.usage=Použitie: /e4mc debug <on|off|status>

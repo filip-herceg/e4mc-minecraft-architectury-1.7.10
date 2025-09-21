@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Plaaslike speletjie op domein [%s] gehuisves
+text.e4mc_minecraft.closeServer=Plaaslike speletjie word nie meer publiek gehuisves nie
+text.e4mc_minecraft.serverAlreadyClosed=Plaaslike speletjie word nie publiek gehuisves nie
+text.e4mc_minecraft.clickToStop= (Klik hier om te stop)
+text.e4mc_minecraft.error='n Fout het in e4mc voorgekom
+text.e4mc_minecraft.serverAlreadyOpen=Plaaslike speletjie word reeds publiek gehuisves
+text.e4mc_minecraft.status.noSession=Nog geen sessie nie. Gebruik /e4mc start.
+text.e4mc_minecraft.status.line=Toestand=%s, via=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Laaste fout: %s
+text.e4mc_minecraft.status.broker=Broker: %s (HTTP %s) antwoord: %s
+text.e4mc_minecraft.debug.enabled=Diagnostiek geaktiveer
+text.e4mc_minecraft.debug.disabled=Diagnostiek gedeaktiveer
+text.e4mc_minecraft.debug.status=Debug is %s
+text.e4mc_minecraft.debug.usage=Gebruik: /e4mc debug <on|off|status>

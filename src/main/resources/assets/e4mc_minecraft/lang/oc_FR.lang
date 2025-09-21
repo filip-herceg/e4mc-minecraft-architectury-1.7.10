@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=La partida locala es albergada sul domeni [%s]
+text.e4mc_minecraft.closeServer=La partida locala es pas mai albergada publicament
+text.e4mc_minecraft.serverAlreadyClosed=La partida locala es pas albergada publicament
+text.e4mc_minecraft.clickToStop= (Clicatz aicí per arrestar)
+text.e4mc_minecraft.error=Una error s’es producha dins e4mc
+text.e4mc_minecraft.serverAlreadyOpen=La partida locala es ja albergada publicament
+text.e4mc_minecraft.status.noSession=Pas encara cap de sesilha. Utilizatz /e4mc start.
+text.e4mc_minecraft.status.line=Estat=%s, via=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Darrèra error: %s
+text.e4mc_minecraft.status.broker=Intermediari: %s (HTTP %s) responsa: %s
+text.e4mc_minecraft.debug.enabled=Diagnòstic activat
+text.e4mc_minecraft.debug.disabled=Diagnòstic desactivat
+text.e4mc_minecraft.debug.status=Lo desbugatge es %s
+text.e4mc_minecraft.debug.usage=Usatge : /e4mc debug <on|off|status>

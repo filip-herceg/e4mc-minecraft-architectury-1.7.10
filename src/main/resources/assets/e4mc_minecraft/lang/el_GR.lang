@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Τοπικό παιχνίδι φιλοξενείται στο domain [%s]
+text.e4mc_minecraft.closeServer=Το τοπικό παιχνίδι δεν φιλοξενείται πλέον δημόσια
+text.e4mc_minecraft.serverAlreadyClosed=Το τοπικό παιχνίδι δεν φιλοξενείται δημόσια
+text.e4mc_minecraft.clickToStop= (Κάντε κλικ εδώ για διακοπή)
+text.e4mc_minecraft.error=Παρουσιάστηκε σφάλμα στο e4mc
+text.e4mc_minecraft.serverAlreadyOpen=Το τοπικό παιχνίδι φιλοξενείται ήδη δημόσια
+text.e4mc_minecraft.status.noSession=Δεν υπάρχει συνεδρία ακόμα. Χρησιμοποιήστε /e4mc start.
+text.e4mc_minecraft.status.line=Κατάσταση=%s, μέσω=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Τελευταίο σφάλμα: %s
+text.e4mc_minecraft.status.broker=Μεσάζων: %s (HTTP %s) απάντηση: %s
+text.e4mc_minecraft.debug.enabled=Τα διαγνωστικά ενεργοποιήθηκαν
+text.e4mc_minecraft.debug.disabled=Τα διαγνωστικά απενεργοποιήθηκαν
+text.e4mc_minecraft.debug.status=Το debug είναι %s
+text.e4mc_minecraft.debug.usage=Χρήση: /e4mc debug <on|off|status>

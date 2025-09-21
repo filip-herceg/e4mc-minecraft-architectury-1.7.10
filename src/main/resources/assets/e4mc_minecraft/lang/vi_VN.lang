@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Trò chơi cục bộ được lưu trữ trên tên miền [%s]
+text.e4mc_minecraft.closeServer=Trò chơi cục bộ không còn được lưu trữ công khai
+text.e4mc_minecraft.serverAlreadyClosed=Trò chơi cục bộ không được lưu trữ công khai
+text.e4mc_minecraft.clickToStop= (Bấm vào đây để dừng)
+text.e4mc_minecraft.error=Đã xảy ra lỗi trong e4mc
+text.e4mc_minecraft.serverAlreadyOpen=Trò chơi cục bộ đã được lưu trữ công khai
+text.e4mc_minecraft.status.noSession=Chưa có phiên. Dùng /e4mc start.
+text.e4mc_minecraft.status.line=Trạng thái=%s, qua=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Lỗi gần nhất: %s
+text.e4mc_minecraft.status.broker=Broker: %s (HTTP %s) phản hồi: %s
+text.e4mc_minecraft.debug.enabled=Chẩn đoán đã bật
+text.e4mc_minecraft.debug.disabled=Chẩn đoán đã tắt
+text.e4mc_minecraft.debug.status=Gỡ lỗi là %s
+text.e4mc_minecraft.debug.usage=Cách dùng: /e4mc debug <on|off|status>

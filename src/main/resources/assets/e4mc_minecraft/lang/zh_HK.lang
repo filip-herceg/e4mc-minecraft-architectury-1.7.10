@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=本機遊戲已託管於網域 [%s]
+text.e4mc_minecraft.closeServer=本機遊戲不再公開託管
+text.e4mc_minecraft.serverAlreadyClosed=本機遊戲未公開託管
+text.e4mc_minecraft.clickToStop=（點此停止）
+text.e4mc_minecraft.error=e4mc 發生錯誤
+text.e4mc_minecraft.serverAlreadyOpen=本機遊戲已公開託管
+text.e4mc_minecraft.status.noSession=尚無工作階段。使用 /e4mc start。
+text.e4mc_minecraft.status.line=狀態=%s，經由=%s，ID=%s，%s:%s
+text.e4mc_minecraft.status.lastError=最後錯誤：%s
+text.e4mc_minecraft.status.broker=代理：%s（HTTP %s）回應：%s
+text.e4mc_minecraft.debug.enabled=診斷已啟用
+text.e4mc_minecraft.debug.disabled=診斷已停用
+text.e4mc_minecraft.debug.status=偵錯為 %s
+text.e4mc_minecraft.debug.usage=用法：/e4mc debug <on|off|status>

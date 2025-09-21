@@ -14,6 +14,11 @@ import static org.mockito.Mockito.*;
 
 public class E4mcCommandTest {
     private E4mcCommand command;
+    private static final String START = "start";
+    private static final String STOP = "stop";
+    private static final String RESTART = "restart";
+    private static final String STATUS = "status";
+    private static final String DEBUG = "debug";
     
     @Mock
     private ICommandSender mockSender;
@@ -35,7 +40,11 @@ public class E4mcCommandTest {
     @Test
     public void testGetCommandUsage() {
         String usage = command.getCommandUsage(mockSender);
-        assertEquals("Usage should show available subcommands", "/e4mc <start|stop|restart>", usage);
+    assertTrue(usage.contains(START));
+    assertTrue(usage.contains(STOP));
+    assertTrue(usage.contains(RESTART));
+    assertTrue(usage.contains(STATUS));
+    assertTrue(usage.contains(DEBUG));
     }
     
     @Test
@@ -63,11 +72,17 @@ public class E4mcCommandTest {
         String[] invalidArgs = {"invalid"};
         command.processCommand(mockSender, invalidArgs);
         
-        String[] stopArgs = {"stop"};
+    String[] stopArgs = {STOP};
         command.processCommand(mockSender, stopArgs);
         
-        String[] restartArgs = {"restart"};
+    String[] restartArgs = {RESTART};
         command.processCommand(mockSender, restartArgs);
+
+    String[] statusArgs = {STATUS};
+    command.processCommand(mockSender, statusArgs);
+
+    String[] debugArgs = {DEBUG, STATUS};
+    command.processCommand(mockSender, debugArgs);
         
         // If we get here without exceptions, the basic functionality works
         assertTrue("Process command should handle various inputs without crashing", true);

@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Partida local alojada en el dominio [%s]
+text.e4mc_minecraft.closeServer=La partida local ya no está alojada públicamente
+text.e4mc_minecraft.serverAlreadyClosed=La partida local no está alojada públicamente
+text.e4mc_minecraft.clickToStop= (Hacé clic acá para detener)
+text.e4mc_minecraft.error=Ocurrió un error en e4mc
+text.e4mc_minecraft.serverAlreadyOpen=La partida local ya está alojada públicamente
+text.e4mc_minecraft.status.noSession=Todavía no hay sesión. Usá /e4mc start.
+text.e4mc_minecraft.status.line=Estado=%s, vía=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Último error: %s
+text.e4mc_minecraft.status.broker=Broker: %s (HTTP %s) respuesta: %s
+text.e4mc_minecraft.debug.enabled=Diagnóstico activado
+text.e4mc_minecraft.debug.disabled=Diagnóstico desactivado
+text.e4mc_minecraft.debug.status=Debug está %s
+text.e4mc_minecraft.debug.usage=Uso: /e4mc debug <on|off|status>

@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Gwag oyn leel yw ostysys war an domayn [%s]
+text.e4mc_minecraft.closeServer=An gwag oyn leel ny yw ostysys poblek moy
+text.e4mc_minecraft.serverAlreadyClosed=Nyns yw an gwag oyn leel ostysys poblek
+text.e4mc_minecraft.clickToStop= (Klikya om stoppa)
+text.e4mc_minecraft.error=Kamm fault yns e4mc
+text.e4mc_minecraft.serverAlreadyOpen=An gwag oyn leel yw usy ostysys poblek
+text.e4mc_minecraft.status.noSession=Nyns eus session hwath. Usya /e4mc start.
+text.e4mc_minecraft.status.line=Gwrians=%s, dre=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Kamm diwettha: %s
+text.e4mc_minecraft.status.broker=Brokar: %s (HTTP %s) gorthyp: %s
+text.e4mc_minecraft.debug.enabled=Diagnosek yw aktiva
+text.e4mc_minecraft.debug.disabled=Diagnosek yw diaktiva
+text.e4mc_minecraft.debug.status=Dybog yw %s
+text.e4mc_minecraft.debug.usage=Usyans: /e4mc debug <on|off|status>

@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Локальная игра размещена на домене [%s]
+text.e4mc_minecraft.closeServer=Локальная игра больше не публикуется
+text.e4mc_minecraft.serverAlreadyClosed=Локальная игра не публикуется
+text.e4mc_minecraft.clickToStop= (Нажмите здесь, чтобы остановить)
+text.e4mc_minecraft.error=В e4mc произошла ошибка
+text.e4mc_minecraft.serverAlreadyOpen=Локальная игра уже публикуется
+text.e4mc_minecraft.status.noSession=Сессии нет. Используйте /e4mc start.
+text.e4mc_minecraft.status.line=Состояние=%s, через=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Последняя ошибка: %s
+text.e4mc_minecraft.status.broker=Брокер: %s (HTTP %s) ответ: %s
+text.e4mc_minecraft.debug.enabled=Диагностика включена
+text.e4mc_minecraft.debug.disabled=Диагностика выключена
+text.e4mc_minecraft.debug.status=Режим отладки: %s
+text.e4mc_minecraft.debug.usage=Использование: /e4mc debug <on|off|status>

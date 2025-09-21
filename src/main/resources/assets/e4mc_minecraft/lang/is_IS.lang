@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Staðbundinn leikur er hýstur á léninu [%s]
+text.e4mc_minecraft.closeServer=Staðbundinn leikur er ekki lengur opinberlega hýstur
+text.e4mc_minecraft.serverAlreadyClosed=Staðbundinn leikur er ekki opinberlega hýstur
+text.e4mc_minecraft.clickToStop= (Smelltu hér til að stöðva)
+text.e4mc_minecraft.error=Villa kom upp í e4mc
+text.e4mc_minecraft.serverAlreadyOpen=Staðbundinn leikur er nú þegar opinberlega hýstur
+text.e4mc_minecraft.status.noSession=Engin seta enn. Notaðu /e4mc start.
+text.e4mc_minecraft.status.line=Staða=%s, í gegnum=%s, auðkenni=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Síðasta villa: %s
+text.e4mc_minecraft.status.broker=Miðlari: %s (HTTP %s) svar: %s
+text.e4mc_minecraft.debug.enabled=Greining virkjuð
+text.e4mc_minecraft.debug.disabled=Greining óvirk
+text.e4mc_minecraft.debug.status=Aflúsun er %s
+text.e4mc_minecraft.debug.usage=Notkun: /e4mc debug <on|off|status>

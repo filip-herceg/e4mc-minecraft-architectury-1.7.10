@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Il-logħba lokali hija ospitata fuq id-dominju [%s]
+text.e4mc_minecraft.closeServer=Il-logħba lokali m’għadhiex ospitata pubblikament
+text.e4mc_minecraft.serverAlreadyClosed=Il-logħba lokali mhix ospitata pubblikament
+text.e4mc_minecraft.clickToStop= (Ikklikkja hawn biex twaqqaf)
+text.e4mc_minecraft.error=Sar żball f’e4mc
+text.e4mc_minecraft.serverAlreadyOpen=Il-logħba lokali diġà qed tiġi ospitata pubblikament
+text.e4mc_minecraft.status.noSession=Għad m’hemmx sessjoni. Uża /e4mc start.
+text.e4mc_minecraft.status.line=Status=%s, permezz ta’=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=L-iżball l-aktar riċenti: %s
+text.e4mc_minecraft.status.broker=Intermedjarju: %s (HTTP %s) risposta: %s
+text.e4mc_minecraft.debug.enabled=Diagnostika attivata
+text.e4mc_minecraft.debug.disabled=Diagnostika diżattivata
+text.e4mc_minecraft.debug.status=Id-debug huwa %s
+text.e4mc_minecraft.debug.usage=Użu: /e4mc debug <on|off|status>

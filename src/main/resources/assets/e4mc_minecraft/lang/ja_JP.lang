@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=ローカルゲームはドメイン [%s] でホストされています
+text.e4mc_minecraft.closeServer=ローカルゲームは公開ホスティングされなくなりました
+text.e4mc_minecraft.serverAlreadyClosed=ローカルゲームは公開ホスティングされていません
+text.e4mc_minecraft.clickToStop=（ここをクリックして停止）
+text.e4mc_minecraft.error=e4mc でエラーが発生しました
+text.e4mc_minecraft.serverAlreadyOpen=ローカルゲームはすでに公開ホスティングされています
+text.e4mc_minecraft.status.noSession=セッションはまだありません。/e4mc start を使用してください。
+text.e4mc_minecraft.status.line=状態=%s、経由=%s、ID=%s、%s:%s
+text.e4mc_minecraft.status.lastError=最後のエラー: %s
+text.e4mc_minecraft.status.broker=ブローカー: %s（HTTP %s）応答: %s
+text.e4mc_minecraft.debug.enabled=診断が有効になりました
+text.e4mc_minecraft.debug.disabled=診断が無効になりました
+text.e4mc_minecraft.debug.status=デバッグは %s です
+text.e4mc_minecraft.debug.usage=使用方法: /e4mc debug <on|off|status>

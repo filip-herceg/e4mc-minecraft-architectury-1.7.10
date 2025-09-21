@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Lokale game gehost op domein [%s]
+text.e4mc_minecraft.closeServer=Lokale game wordt niet langer openbaar gehost
+text.e4mc_minecraft.serverAlreadyClosed=Lokale game wordt niet openbaar gehost
+text.e4mc_minecraft.clickToStop= (Klik hier om te stoppen)
+text.e4mc_minecraft.error=Er is een fout opgetreden in e4mc
+text.e4mc_minecraft.serverAlreadyOpen=Lokale game wordt al openbaar gehost
+text.e4mc_minecraft.status.noSession=Nog geen sessie. Gebruik /e4mc start.
+text.e4mc_minecraft.status.line=Status=%s, via=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Laatste fout: %s
+text.e4mc_minecraft.status.broker=Broker: %s (HTTP %s) antwoord: %s
+text.e4mc_minecraft.debug.enabled=Diagnostiek ingeschakeld
+text.e4mc_minecraft.debug.disabled=Diagnostiek uitgeschakeld
+text.e4mc_minecraft.debug.status=Debug is %s
+text.e4mc_minecraft.debug.usage=Gebruik: /e4mc debug <on|off|status>

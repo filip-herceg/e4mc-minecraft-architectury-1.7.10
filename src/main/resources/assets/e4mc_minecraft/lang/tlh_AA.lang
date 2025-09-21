@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=qoD qoH lugh domain [%s]Daq qonwI'
+text.e4mc_minecraft.closeServer=qoD qoH Dochmey qun DaSo'be'qa'
+text.e4mc_minecraft.serverAlreadyClosed=qoD qoH Dochmey qun DaSo'be'
+text.e4mc_minecraft.clickToStop= (mevmeH naDev yI'uy)
+text.e4mc_minecraft.error=e4mcDaq Qagh qa'vam
+text.e4mc_minecraft.serverAlreadyOpen=qoD qoH Dochmey qun DaSo' law'
+text.e4mc_minecraft.status.noSession=not tlhoS ghom. /e4mc start yIlo'.
+text.e4mc_minecraft.status.line=Dotlh=%s, mIgh=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Qagh Qav: %s
+text.e4mc_minecraft.status.broker=wItebHa': %s (HTTP %s) jang: %s
+text.e4mc_minecraft.debug.enabled=Qap Diagnostics
+text.e4mc_minecraft.debug.disabled=puS Diagnostics
+text.e4mc_minecraft.debug.status=Debug 'oH %s
+text.e4mc_minecraft.debug.usage=lo': /e4mc debug <on|off|status>

@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=اللعبة المحلية مستضافة على النطاق [%s]
+text.e4mc_minecraft.closeServer=اللعبة المحلية لم تعد مستضافة بشكل علني
+text.e4mc_minecraft.serverAlreadyClosed=اللعبة المحلية غير مستضافة بشكل علني
+text.e4mc_minecraft.clickToStop= (انقر هنا للإيقاف)
+text.e4mc_minecraft.error=حدث خطأ في e4mc
+text.e4mc_minecraft.serverAlreadyOpen=اللعبة المحلية مستضافة بالفعل بشكل علني
+text.e4mc_minecraft.status.noSession=لا توجد جلسة بعد. استخدم /e4mc start.
+text.e4mc_minecraft.status.line=الحالة=%s، عبر=%s، المعرّف=%s، %s:%s
+text.e4mc_minecraft.status.lastError=آخر خطأ: %s
+text.e4mc_minecraft.status.broker=الوسيط: %s (HTTP %s) الاستجابة: %s
+text.e4mc_minecraft.debug.enabled=تم تفعيل التشخيص
+text.e4mc_minecraft.debug.disabled=تم تعطيل التشخيص
+text.e4mc_minecraft.debug.status=التنقيح هو %s
+text.e4mc_minecraft.debug.usage=الاستخدام: /e4mc debug <on|off|status>

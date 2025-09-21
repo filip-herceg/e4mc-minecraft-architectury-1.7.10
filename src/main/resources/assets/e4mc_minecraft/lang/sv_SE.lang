@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Lokalt spel är värdat på domän [%s]
+text.e4mc_minecraft.closeServer=Det lokala spelet är inte längre offentligt värdat
+text.e4mc_minecraft.serverAlreadyClosed=Det lokala spelet är inte offentligt värdat
+text.e4mc_minecraft.clickToStop= (Klicka här för att stoppa)
+text.e4mc_minecraft.error=Ett fel uppstod i e4mc
+text.e4mc_minecraft.serverAlreadyOpen=Det lokala spelet är redan offentligt värdat
+text.e4mc_minecraft.status.noSession=Ingen session ännu. Använd /e4mc start.
+text.e4mc_minecraft.status.line=Tillstånd=%s, via=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Senaste fel: %s
+text.e4mc_minecraft.status.broker=Mäklare: %s (HTTP %s) svar: %s
+text.e4mc_minecraft.debug.enabled=Diagnostik aktiverad
+text.e4mc_minecraft.debug.disabled=Diagnostik inaktiverad
+text.e4mc_minecraft.debug.status=Felsökning är %s
+text.e4mc_minecraft.debug.usage=Användning: /e4mc debug <on|off|status>

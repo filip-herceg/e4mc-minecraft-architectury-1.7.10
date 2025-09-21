@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Lokalt spel vert hosta på domenet [%s]
+text.e4mc_minecraft.closeServer=Det lokale spelet er ikkje lenger offentleg hosta
+text.e4mc_minecraft.serverAlreadyClosed=Det lokale spelet er ikkje offentleg hosta
+text.e4mc_minecraft.clickToStop= (Klikk her for å stoppe)
+text.e4mc_minecraft.error=Det oppstod ein feil i e4mc
+text.e4mc_minecraft.serverAlreadyOpen=Det lokale spelet er allereie offentleg hosta
+text.e4mc_minecraft.status.noSession=Ingen økt enno. Bruk /e4mc start.
+text.e4mc_minecraft.status.line=Status=%s, via=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Siste feil: %s
+text.e4mc_minecraft.status.broker=Meklar: %s (HTTP %s) svar: %s
+text.e4mc_minecraft.debug.enabled=Diagnostikk slått på
+text.e4mc_minecraft.debug.disabled=Diagnostikk slått av
+text.e4mc_minecraft.debug.status=Feilsøking er %s
+text.e4mc_minecraft.debug.usage=Bruk: /e4mc debug <on|off|status>

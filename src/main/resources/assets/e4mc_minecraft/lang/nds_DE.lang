@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Lokales Speel op’n Domen [%s] hostet
+text.e4mc_minecraft.closeServer=Dat lokale Speel warrt nich mehr apen hostet
+text.e4mc_minecraft.serverAlreadyClosed=Dat lokale Speel warrt nich apen hostet
+text.e4mc_minecraft.clickToStop= (Hier klicken to stoppen)
+text.e4mc_minecraft.error=En Fehler is in e4mc optraden
+text.e4mc_minecraft.serverAlreadyOpen=Dat lokale Speel is al apen hostet
+text.e4mc_minecraft.status.noSession=Noch keen Törn. Bruuk /e4mc start.
+text.e4mc_minecraft.status.line=Status=%s, över=%s, ID=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Letzten Fehler: %s
+text.e4mc_minecraft.status.broker=Mäkler: %s (HTTP %s) Antwoort: %s
+text.e4mc_minecraft.debug.enabled=Diagnostik anmaakt
+text.e4mc_minecraft.debug.disabled=Diagnostik utmaakt
+text.e4mc_minecraft.debug.status=Debug is %s
+text.e4mc_minecraft.debug.usage=Bruuk: /e4mc debug <on|off|status>

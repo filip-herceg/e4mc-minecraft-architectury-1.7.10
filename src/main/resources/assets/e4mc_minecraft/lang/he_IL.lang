@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=המשחק המקומי מאוחסן בדומיין [%s]
+text.e4mc_minecraft.closeServer=המשחק המקומי אינו מאוחסן עוד באופן פומבי
+text.e4mc_minecraft.serverAlreadyClosed=המשחק המקומי אינו מאוחסן באופן פומבי
+text.e4mc_minecraft.clickToStop= (לחץ כאן לעצירה)
+text.e4mc_minecraft.error=אירעה שגיאה ב־e4mc
+text.e4mc_minecraft.serverAlreadyOpen=המשחק המקומי כבר מאוחסן באופן פומבי
+text.e4mc_minecraft.status.noSession=עדיין אין סשן. השתמש ב־/e4mc start.
+text.e4mc_minecraft.status.line=מצב=%s, דרך=%s, מזהה=%s, %s:%s
+text.e4mc_minecraft.status.lastError=שגיאה אחרונה: %s
+text.e4mc_minecraft.status.broker=מתווך: %s (HTTP %s) תגובה: %s
+text.e4mc_minecraft.debug.enabled=האבחון הופעל
+text.e4mc_minecraft.debug.disabled=האבחון הושבת
+text.e4mc_minecraft.debug.status=מצב ניפוי באגים הוא %s
+text.e4mc_minecraft.debug.usage=שימוש: /e4mc debug <on|off|status>

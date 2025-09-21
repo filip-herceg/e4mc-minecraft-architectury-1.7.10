@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Локалната игра е хостирана на доменот [%s]
+text.e4mc_minecraft.closeServer=Локалната игра повеќе не е јавно хостирана
+text.e4mc_minecraft.serverAlreadyClosed=Локалната игра не е јавно хостирана
+text.e4mc_minecraft.clickToStop= (Кликнете тука за да запрете)
+text.e4mc_minecraft.error=Се појави грешка во e4mc
+text.e4mc_minecraft.serverAlreadyOpen=Локалната игра веќе е јавно хостирана
+text.e4mc_minecraft.status.noSession=Сè уште нема сесија. Користете /e4mc start.
+text.e4mc_minecraft.status.line=Статус=%s, преку=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Последна грешка: %s
+text.e4mc_minecraft.status.broker=Посредник: %s (HTTP %s) одговор: %s
+text.e4mc_minecraft.debug.enabled=Дијагностика е вклучена
+text.e4mc_minecraft.debug.disabled=Дијагностика е исклучена
+text.e4mc_minecraft.debug.status=Откривање грешки е %s
+text.e4mc_minecraft.debug.usage=Употреба: /e4mc debug <on|off|status>

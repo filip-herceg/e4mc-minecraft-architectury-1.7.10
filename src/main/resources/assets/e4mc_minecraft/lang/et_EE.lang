@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Kohalik mäng on hostitud domeenis [%s]
+text.e4mc_minecraft.closeServer=Kohalik mäng ei ole enam avalikult hostitud
+text.e4mc_minecraft.serverAlreadyClosed=Kohalik mäng ei ole avalikult hostitud
+text.e4mc_minecraft.clickToStop= (Klõpsa siin, et peatada)
+text.e4mc_minecraft.error=E4mc-s ilmnes viga
+text.e4mc_minecraft.serverAlreadyOpen=Kohalik mäng on juba avalikult hostitud
+text.e4mc_minecraft.status.noSession=Seanssi veel pole. Kasuta /e4mc start.
+text.e4mc_minecraft.status.line=Olek=%s, kaudu=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Viimane viga: %s
+text.e4mc_minecraft.status.broker=Maakler: %s (HTTP %s) vastus: %s
+text.e4mc_minecraft.debug.enabled=Diagnostika lubatud
+text.e4mc_minecraft.debug.disabled=Diagnostika keelatud
+text.e4mc_minecraft.debug.status=Silu on %s
+text.e4mc_minecraft.debug.usage=Kasutus: /e4mc debug <on|off|status>

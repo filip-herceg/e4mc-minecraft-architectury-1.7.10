@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Yerel oyun [%s] alanında barındırılıyor
+text.e4mc_minecraft.closeServer=Yerel oyun artık herkese açık olarak barındırılmıyor
+text.e4mc_minecraft.serverAlreadyClosed=Yerel oyun herkese açık olarak barındırılmıyor
+text.e4mc_minecraft.clickToStop= (Durdurmak için buraya tıklayın)
+text.e4mc_minecraft.error=e4mc'de bir hata oluştu
+text.e4mc_minecraft.serverAlreadyOpen=Yerel oyun zaten herkese açık olarak barındırılıyor
+text.e4mc_minecraft.status.noSession=Henüz oturum yok. /e4mc start kullanın.
+text.e4mc_minecraft.status.line=Durum=%s, üzerinden=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Son hata: %s
+text.e4mc_minecraft.status.broker=Aracı: %s (HTTP %s) yanıt: %s
+text.e4mc_minecraft.debug.enabled=Tanılama etkin
+text.e4mc_minecraft.debug.disabled=Tanılama devre dışı
+text.e4mc_minecraft.debug.status=Hata ayıklama %s
+text.e4mc_minecraft.debug.usage=Kullanım: /e4mc debug <on|off|status>

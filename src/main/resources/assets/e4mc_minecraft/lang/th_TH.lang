@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=เกมภายในเครื่องถูกโฮสต์บนโดเมน [%s]
+text.e4mc_minecraft.closeServer=เกมภายในเครื่องไม่ได้โฮสต์แบบสาธารณะอีกต่อไป
+text.e4mc_minecraft.serverAlreadyClosed=เกมภายในเครื่องไม่ได้โฮสต์แบบสาธารณะ
+text.e4mc_minecraft.clickToStop= (คลิกที่นี่เพื่อหยุด)
+text.e4mc_minecraft.error=เกิดข้อผิดพลาดใน e4mc
+text.e4mc_minecraft.serverAlreadyOpen=เกมภายในเครื่องถูกโฮสต์แบบสาธารณะแล้ว
+text.e4mc_minecraft.status.noSession=ยังไม่มีเซสชัน ใช้ /e4mc start
+text.e4mc_minecraft.status.line=สถานะ=%s, ผ่าน=%s, ไอดี=%s, %s:%s
+text.e4mc_minecraft.status.lastError=ข้อผิดพลาดล่าสุด: %s
+text.e4mc_minecraft.status.broker=โบรกเกอร์: %s (HTTP %s) การตอบกลับ: %s
+text.e4mc_minecraft.debug.enabled=เปิดการวินิจฉัยแล้ว
+text.e4mc_minecraft.debug.disabled=ปิดการวินิจฉัยแล้ว
+text.e4mc_minecraft.debug.status=การดีบักคือ %s
+text.e4mc_minecraft.debug.usage=การใช้งาน: /e4mc debug <on|off|status>

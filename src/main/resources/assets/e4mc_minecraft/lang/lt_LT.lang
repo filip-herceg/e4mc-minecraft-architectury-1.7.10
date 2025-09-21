@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Vietinis žaidimas talpinamas domene [%s]
+text.e4mc_minecraft.closeServer=Vietinis žaidimas nebėra viešai talpinamas
+text.e4mc_minecraft.serverAlreadyClosed=Vietinis žaidimas nėra viešai talpinamas
+text.e4mc_minecraft.clickToStop= (Spustelėkite čia, kad sustabdytumėte)
+text.e4mc_minecraft.error=E4mc įvyko klaida
+text.e4mc_minecraft.serverAlreadyOpen=Vietinis žaidimas jau viešai talpinamas
+text.e4mc_minecraft.status.noSession=Dar nėra sesijos. Naudokite /e4mc start.
+text.e4mc_minecraft.status.line=Būsena=%s, per=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Paskutinė klaida: %s
+text.e4mc_minecraft.status.broker=Tarpininkas: %s (HTTP %s) atsakymas: %s
+text.e4mc_minecraft.debug.enabled=Diagnostika įjungta
+text.e4mc_minecraft.debug.disabled=Diagnostika išjungta
+text.e4mc_minecraft.debug.status=Derinimas yra %s
+text.e4mc_minecraft.debug.usage=Naudojimas: /e4mc debug <on|off|status>

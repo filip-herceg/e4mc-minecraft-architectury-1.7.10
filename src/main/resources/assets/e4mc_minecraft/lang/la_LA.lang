@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Ludus loci in dominio [%s] hospitatur
+text.e4mc_minecraft.closeServer=Ludus loci iam non publice hospitatur
+text.e4mc_minecraft.serverAlreadyClosed=Ludus loci non publice hospitatur
+text.e4mc_minecraft.clickToStop= (Hic preme ut sistas)
+text.e4mc_minecraft.error=Error in e4mc factus est
+text.e4mc_minecraft.serverAlreadyOpen=Ludus loci iam publice hospitatur
+text.e4mc_minecraft.status.noSession=Adhuc nulla sessio est. Utere /e4mc start.
+text.e4mc_minecraft.status.line=Status=%s, per=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Error novissimus: %s
+text.e4mc_minecraft.status.broker=Mediator: %s (HTTP %s) responsum: %s
+text.e4mc_minecraft.debug.enabled=Diagnostica activa est
+text.e4mc_minecraft.debug.disabled=Diagnostica inactiva est
+text.e4mc_minecraft.debug.status=Debug est %s
+text.e4mc_minecraft.debug.usage=Usus: /e4mc debug <on|off|status>

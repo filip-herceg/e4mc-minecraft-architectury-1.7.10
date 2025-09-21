@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=本地游戏已在域名 [%s] 上托管
+text.e4mc_minecraft.closeServer=本地游戏不再公开托管
+text.e4mc_minecraft.serverAlreadyClosed=本地游戏未公开托管
+text.e4mc_minecraft.clickToStop=（点击此处停止）
+text.e4mc_minecraft.error=e4mc 发生错误
+text.e4mc_minecraft.serverAlreadyOpen=本地游戏已公开托管
+text.e4mc_minecraft.status.noSession=尚无会话。使用 /e4mc start。
+text.e4mc_minecraft.status.line=状态=%s，途径=%s，ID=%s，%s:%s
+text.e4mc_minecraft.status.lastError=最后一次错误：%s
+text.e4mc_minecraft.status.broker=代理：%s（HTTP %s）响应：%s
+text.e4mc_minecraft.debug.enabled=诊断已启用
+text.e4mc_minecraft.debug.disabled=诊断已禁用
+text.e4mc_minecraft.debug.status=调试为 %s
+text.e4mc_minecraft.debug.usage=用法：/e4mc debug <on|off|status>

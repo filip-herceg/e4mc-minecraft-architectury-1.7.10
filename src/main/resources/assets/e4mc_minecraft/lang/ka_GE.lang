@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=ლოკალური თამაში ჰოსტინგდება დომენზე [%s]
+text.e4mc_minecraft.closeServer=ლოკალური თამაში აღარ არის საჯაროდ განთავსებული
+text.e4mc_minecraft.serverAlreadyClosed=ლოკალური თამაში საჯაროდ არ არის განთავსებული
+text.e4mc_minecraft.clickToStop= (დააჭირეთ აქ შეჩერებისთვის)
+text.e4mc_minecraft.error=e4mc-ში მოხდა შეცდომა
+text.e4mc_minecraft.serverAlreadyOpen=ლოკალური თამაში უკვე საჯაროდაა განთავსებული
+text.e4mc_minecraft.status.noSession=ჯერ სესია არ არსებობს. გამოიყენეთ /e4mc start.
+text.e4mc_minecraft.status.line=მდგომარეობა=%s, მეშვეობით=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=უკანასკნელი შეცდომა: %s
+text.e4mc_minecraft.status.broker=ბროკერი: %s (HTTP %s) პასუხი: %s
+text.e4mc_minecraft.debug.enabled=დიაგნოსტიკა ჩართულია
+text.e4mc_minecraft.debug.disabled=დიაგნოსტიკა გამორთულია
+text.e4mc_minecraft.debug.status=გebug %s
+text.e4mc_minecraft.debug.usage=გამოყენება: /e4mc debug <on|off|status>

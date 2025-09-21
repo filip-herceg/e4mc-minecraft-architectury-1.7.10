@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Partie locale hébergée sur le domaine [%s]
+text.e4mc_minecraft.closeServer=La partie locale n’est plus hébergée publiquement
+text.e4mc_minecraft.serverAlreadyClosed=La partie locale n’est pas hébergée publiquement
+text.e4mc_minecraft.clickToStop= (Cliquez ici pour arrêter)
+text.e4mc_minecraft.error=Une erreur s’est produite dans e4mc
+text.e4mc_minecraft.serverAlreadyOpen=La partie locale est déjà hébergée publiquement
+text.e4mc_minecraft.status.noSession=Aucune session pour le moment. Utilisez /e4mc start.
+text.e4mc_minecraft.status.line=État=%s, via=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Dernière erreur : %s
+text.e4mc_minecraft.status.broker=Courtier : %s (HTTP %s) réponse : %s
+text.e4mc_minecraft.debug.enabled=Diagnostic activé
+text.e4mc_minecraft.debug.disabled=Diagnostic désactivé
+text.e4mc_minecraft.debug.status=Le débogage est %s
+text.e4mc_minecraft.debug.usage=Utilisation : /e4mc debug <on|off|status>

@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Ta’n geayrt ynnydagh er oastagh er y domen [%s]
+text.e4mc_minecraft.closeServer=Cha nel y geayrt ynnydagh er oastagh dy theayagh ny smoo
+text.e4mc_minecraft.serverAlreadyClosed=Cha nel y geayrt ynnydagh er oastagh dy theayagh
+text.e4mc_minecraft.clickToStop= (Click ayns shoh dy scuirr)
+text.e4mc_minecraft.error=Va mearystey ayns e4mc
+text.e4mc_minecraft.serverAlreadyOpen=Ta’n geayrt ynnydagh er oastagh dy theayagh nyns t’eh
+text.e4mc_minecraft.status.noSession=Cha nel sieshaan foast. Ymmyd jeh /e4mc start.
+text.e4mc_minecraft.status.line=Staad=%s, trooid=%s, enmyssaght=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Yn mearystey s’anmey: %s
+text.e4mc_minecraft.status.broker=Eddyrane: %s (HTTP %s) freayll: %s
+text.e4mc_minecraft.debug.enabled=Jeeaghyn er ny lomarcan er ny gientyn
+text.e4mc_minecraft.debug.disabled=Ta’n jeeaghyn jeant magh
+text.e4mc_minecraft.debug.status=Yn jeeaghagh ny mearystey she %s
+text.e4mc_minecraft.debug.usage=Ymmyd: /e4mc debug <on|off|status>

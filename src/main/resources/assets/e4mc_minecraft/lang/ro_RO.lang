@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Jocul local este găzduit pe domeniul [%s]
+text.e4mc_minecraft.closeServer=Jocul local nu mai este găzduit public
+text.e4mc_minecraft.serverAlreadyClosed=Jocul local nu este găzduit public
+text.e4mc_minecraft.clickToStop= (Clic aici pentru a opri)
+text.e4mc_minecraft.error=A apărut o eroare în e4mc
+text.e4mc_minecraft.serverAlreadyOpen=Jocul local este deja găzduit public
+text.e4mc_minecraft.status.noSession=Încă nu există sesiune. Folosește /e4mc start.
+text.e4mc_minecraft.status.line=Stare=%s, prin=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Ultima eroare: %s
+text.e4mc_minecraft.status.broker=Broker: %s (HTTP %s) răspuns: %s
+text.e4mc_minecraft.debug.enabled=Diagnostic activat
+text.e4mc_minecraft.debug.disabled=Diagnostic dezactivat
+text.e4mc_minecraft.debug.status=Depanarea este %s
+text.e4mc_minecraft.debug.usage=Utilizare: /e4mc debug <on|off|status>

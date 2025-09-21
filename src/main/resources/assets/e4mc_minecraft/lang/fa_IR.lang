@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=بازی محلی در دامنه [%s] میزبانی می‌شود
+text.e4mc_minecraft.closeServer=بازی محلی دیگر به‌صورت عمومی میزبانی نمی‌شود
+text.e4mc_minecraft.serverAlreadyClosed=بازی محلی به‌صورت عمومی میزبانی نمی‌شود
+text.e4mc_minecraft.clickToStop= (برای توقف اینجا کلیک کنید)
+text.e4mc_minecraft.error=خطایی در e4mc رخ داد
+text.e4mc_minecraft.serverAlreadyOpen=بازی محلی هم‌اکنون به‌صورت عمومی میزبانی می‌شود
+text.e4mc_minecraft.status.noSession=هنوز جلسه‌ای وجود ندارد. از /e4mc start استفاده کنید.
+text.e4mc_minecraft.status.line=وضعیت=%s، از طریق=%s، شناسه=%s، %s:%s
+text.e4mc_minecraft.status.lastError=آخرین خطا: %s
+text.e4mc_minecraft.status.broker=کارگزار: %s (HTTP %s) پاسخ: %s
+text.e4mc_minecraft.debug.enabled=عیب‌یابی فعال شد
+text.e4mc_minecraft.debug.disabled=عیب‌یابی غیرفعال شد
+text.e4mc_minecraft.debug.status=حالت اشکال‌زدایی %s است
+text.e4mc_minecraft.debug.usage=نحوه استفاده: /e4mc debug <on|off|status>

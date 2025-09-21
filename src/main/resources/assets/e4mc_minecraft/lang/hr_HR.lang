@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Lokalna igra je hostirana na domeni [%s]
+text.e4mc_minecraft.closeServer=Lokalna igra više nije javno hostirana
+text.e4mc_minecraft.serverAlreadyClosed=Lokalna igra nije javno hostirana
+text.e4mc_minecraft.clickToStop= (Kliknite ovdje za zaustavljanje)
+text.e4mc_minecraft.error=Došlo je do pogreške u e4mc
+text.e4mc_minecraft.serverAlreadyOpen=Lokalna igra je već javno hostirana
+text.e4mc_minecraft.status.noSession=Još nema sesije. Koristite /e4mc start.
+text.e4mc_minecraft.status.line=Stanje=%s, preko=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Zadnja pogreška: %s
+text.e4mc_minecraft.status.broker=Posrednik: %s (HTTP %s) odgovor: %s
+text.e4mc_minecraft.debug.enabled=Dijagnostika uključena
+text.e4mc_minecraft.debug.disabled=Dijagnostika isključena
+text.e4mc_minecraft.debug.status=Ispravljanje grešaka je %s
+text.e4mc_minecraft.debug.usage=Uporaba: /e4mc debug <on|off|status>

@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Partida local allotjada al domini [%s]
+text.e4mc_minecraft.closeServer=La partida local ja no està allotjada públicament
+text.e4mc_minecraft.serverAlreadyClosed=La partida local no està allotjada públicament
+text.e4mc_minecraft.clickToStop= (Fes clic ací per a parar)
+text.e4mc_minecraft.error=S'ha produït un error en e4mc
+text.e4mc_minecraft.serverAlreadyOpen=La partida local ja està allotjada públicament
+text.e4mc_minecraft.status.noSession=Encara no hi ha sessió. Usa /e4mc start.
+text.e4mc_minecraft.status.line=Estat=%s, per=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Darrer error: %s
+text.e4mc_minecraft.status.broker=Intermediari: %s (HTTP %s) resposta: %s
+text.e4mc_minecraft.debug.enabled=Diagnòstic activat
+text.e4mc_minecraft.debug.disabled=Diagnòstic desactivat
+text.e4mc_minecraft.debug.status=La depuració és %s
+text.e4mc_minecraft.debug.usage=Ús: /e4mc debug <on|off|status>

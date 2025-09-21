@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Tokiko jokoa [%s] domeinuan ostalaria da
+text.e4mc_minecraft.closeServer=Tokiko jokoa jada ez dago publikoan ostatuta
+text.e4mc_minecraft.serverAlreadyClosed=Tokiko jokoa ez dago publikoan ostatuta
+text.e4mc_minecraft.clickToStop= (Egin klik hemen gelditzeko)
+text.e4mc_minecraft.error=Errore bat gertatu da e4mc-n
+text.e4mc_minecraft.serverAlreadyOpen=Tokiko jokoa dagoeneko publikoan ostatuta dago
+text.e4mc_minecraft.status.noSession=Oraindik ez dago saiorik. Erabili /e4mc start.
+text.e4mc_minecraft.status.line=Egoera=%s, bidez=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Azken errorea: %s
+text.e4mc_minecraft.status.broker=Bitartekaria: %s (HTTP %s) erantzuna: %s
+text.e4mc_minecraft.debug.enabled=Diagnostikoa gaituta
+text.e4mc_minecraft.debug.disabled=Diagnostikoa desgaituta
+text.e4mc_minecraft.debug.status=Arazketa %s da
+text.e4mc_minecraft.debug.usage=Erabilera: /e4mc debug <on|off|status>

@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=로컬 게임이 도메인 [%s]에서 호스팅됩니다
+text.e4mc_minecraft.closeServer=로컬 게임이 더 이상 공개적으로 호스팅되지 않습니다
+text.e4mc_minecraft.serverAlreadyClosed=로컬 게임은 공개적으로 호스팅되지 않습니다
+text.e4mc_minecraft.clickToStop=(중지하려면 여기를 클릭)
+text.e4mc_minecraft.error=e4mc에서 오류가 발생했습니다
+text.e4mc_minecraft.serverAlreadyOpen=로컬 게임은 이미 공개적으로 호스팅되고 있습니다
+text.e4mc_minecraft.status.noSession=아직 세션이 없습니다. /e4mc start를 사용하세요.
+text.e4mc_minecraft.status.line=상태=%s, 경유=%s, ID=%s, %s:%s
+text.e4mc_minecraft.status.lastError=마지막 오류: %s
+text.e4mc_minecraft.status.broker=브로커: %s (HTTP %s) 응답: %s
+text.e4mc_minecraft.debug.enabled=진단이 활성화됨
+text.e4mc_minecraft.debug.disabled=진단이 비활성화됨
+text.e4mc_minecraft.debug.status=디버그는 %s 입니다
+text.e4mc_minecraft.debug.usage=사용법: /e4mc debug <on|off|status>

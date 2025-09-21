@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=உள்ளூர் விளையாட்டு [%s] டொமைன் மீது ஹோஸ்ட் செய்யப்பட்டுள்ளது
+text.e4mc_minecraft.closeServer=உள்ளூர் விளையாட்டு இனி பொது ஹோஸ்டிங் செய்யப்படாது
+text.e4mc_minecraft.serverAlreadyClosed=உள்ளூர் விளையாட்டு பொது ஹோஸ்டிங் செய்யப்படவில்லை
+text.e4mc_minecraft.clickToStop= (நிறுத்த இங்கே கிளிக் செய்யவும்)
+text.e4mc_minecraft.error=e4mc இல் ஒரு பிழை ஏற்பட்டது
+text.e4mc_minecraft.serverAlreadyOpen=உள்ளூர் விளையாட்டு ஏற்கனவே பொது ஹோஸ்டிங் செய்யப்பட்டுள்ளது
+text.e4mc_minecraft.status.noSession=இன்னும் அமர்வு இல்லை. /e4mc start ஐப் பயன்படுத்தவும்.
+text.e4mc_minecraft.status.line=நிலை=%s, மூலம்=%s, அடையாளம்=%s, %s:%s
+text.e4mc_minecraft.status.lastError=கடைசி பிழை: %s
+text.e4mc_minecraft.status.broker=மத்தியஸ்தர்: %s (HTTP %s) பதில்: %s
+text.e4mc_minecraft.debug.enabled=நோய்வாய்ப்பு செயல்படுத்தப்பட்டது
+text.e4mc_minecraft.debug.disabled=நோய்வாய்ப்பு முடக்கப்பட்டது
+text.e4mc_minecraft.debug.status=பிழைத்திருத்தம் %s
+text.e4mc_minecraft.debug.usage=பயன்பாடு: /e4mc debug <on|off|status>

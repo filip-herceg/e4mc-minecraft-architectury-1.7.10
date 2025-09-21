@@ -19,6 +19,16 @@ public class RelaySession {
     private Socket relaySocket;
     private State state = State.STOPPED;
 
+    // Diagnostics
+    private String lastSource = "none"; // broker|fallback|default
+    private String lastRelayId = "";
+    private String lastRelayHost = "";
+    private int lastRelayPort = -1;
+    private String lastBrokerUrl = "";
+    private int lastHttpCode = -1;
+    private String lastHttpSnippet = "";
+    private String lastError = "";
+
     public enum State {
         STOPPED,
         CONNECTING,
@@ -42,6 +52,7 @@ public class RelaySession {
         }
         running.set(true);
         state = State.CONNECTING;
+        Diagnostics.info("Session starting (thread={})", Thread.currentThread().getName());
         try {
             BrokerResponse relayInfo = getBrokerInfo();
             if (relayInfo == null) {
@@ -49,6 +60,10 @@ public class RelaySession {
                 addChatMessage(EnumChatFormatting.RED + "Failed to get relay information");
                 return;
             }
+            lastRelayId = relayInfo.getId();
+            lastRelayHost = relayInfo.getHost();
+            lastRelayPort = relayInfo.getPort();
+            Diagnostics.info("Connecting to relay {} ({}:{}) via {}", lastRelayId, lastRelayHost, lastRelayPort, lastSource);
             Socket s = new Socket();
             s.connect(new InetSocketAddress(relayInfo.getHost(), relayInfo.getPort()), 5000);
             s.setSoTimeout(10000);
@@ -60,6 +75,7 @@ public class RelaySession {
             readerThread.start();
         } catch (Exception e) {
             LOGGER.error("Failed to start relay session", e);
+            lastError = e.toString();
             state = State.UNHEALTHY;
             addChatMessage(EnumChatFormatting.RED + "Failed to connect to relay: " + e.getMessage());
         }
@@ -104,14 +120,18 @@ public class RelaySession {
                 r.setId("default");
                 r.setHost("127.0.0.1");
                 r.setPort(25565);
+                lastSource = "default";
                 return r;
             }
 
             if (cfg.isUseBroker()) {
                 String url = cfg.getBrokerUrl();
+                lastBrokerUrl = url;
                 String body = Http.get(url, 3000);
+                lastHttpCode = Http.lastCode();
+                lastHttpSnippet = body != null ? body.substring(0, Math.min(120, body.length())) : "";
                 BrokerResponse r = parseBrokerResponse(body);
-                if (r != null) return r;
+                if (r != null) { lastSource = "broker"; return r; }
                 LOGGER.warn("Broker response invalid, falling back to configured relay host/port");
             }
 
@@ -119,9 +139,11 @@ public class RelaySession {
             r.setId("configured");
             r.setHost(cfg.getRelayHost());
             r.setPort(cfg.getRelayPort());
+            lastSource = "fallback";
             return r;
         } catch (Exception e) {
             LOGGER.error("Failed to get broker info", e);
+            lastError = e.toString();
             return null;
         }
     }
@@ -195,8 +217,10 @@ public class RelaySession {
 
     // Minimal HTTP utility to fetch broker JSON using JRE classes
     private static final class Http {
+        private static int code = -1;
+        static int lastCode() { return code; }
         static String get(String url, int timeoutMs) throws IOException {
-            java.net.URL u = new java.net.URL(url);
+            java.net.URL u = java.net.URI.create(url).toURL();
             java.net.URLConnection c = u.openConnection();
             if (c instanceof java.net.HttpURLConnection) {
                 java.net.HttpURLConnection h = (java.net.HttpURLConnection) c;
@@ -204,7 +228,7 @@ public class RelaySession {
                 h.setReadTimeout(timeoutMs);
                 h.setRequestMethod("GET");
                 h.setRequestProperty("Accept", "application/json");
-                int code = h.getResponseCode();
+                code = h.getResponseCode();
                 InputStream is = (code >= 200 && code < 300) ? h.getInputStream() : h.getErrorStream();
                 if (is == null) return null;
                 try (BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
@@ -214,6 +238,7 @@ public class RelaySession {
                     return sb.toString();
                 }
             } else {
+                code = 0;
                 try (InputStream is = c.getInputStream();
                      BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
                     StringBuilder sb = new StringBuilder();
@@ -224,4 +249,14 @@ public class RelaySession {
             }
         }
     }
+
+    // === Diagnostics getters ===
+    public String getLastSource() { return lastSource; }
+    public String getLastRelayId() { return lastRelayId; }
+    public String getLastRelayHost() { return lastRelayHost; }
+    public int getLastRelayPort() { return lastRelayPort; }
+    public String getLastBrokerUrl() { return lastBrokerUrl; }
+    public int getLastHttpCode() { return lastHttpCode; }
+    public String getLastHttpSnippet() { return lastHttpSnippet; }
+    public String getLastError() { return lastError; }
 }

@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Krajevna igra je gostovana na domeni [%s]
+text.e4mc_minecraft.closeServer=Krajevna igra ni več javno gostovana
+text.e4mc_minecraft.serverAlreadyClosed=Krajevna igra ni javno gostovana
+text.e4mc_minecraft.clickToStop= (Kliknite tukaj za ustavitev)
+text.e4mc_minecraft.error=V e4mc je prišlo do napake
+text.e4mc_minecraft.serverAlreadyOpen=Krajevna igra je že javno gostovana
+text.e4mc_minecraft.status.noSession=Seja še ni na voljo. Uporabite /e4mc start.
+text.e4mc_minecraft.status.line=Stanje=%s, preko=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Zadnja napaka: %s
+text.e4mc_minecraft.status.broker=Posrednik: %s (HTTP %s) odgovor: %s
+text.e4mc_minecraft.debug.enabled=Diagnostika omogočena
+text.e4mc_minecraft.debug.disabled=Diagnostika onemogočena
+text.e4mc_minecraft.debug.status=Razhroščevanje je %s
+text.e4mc_minecraft.debug.usage=Uporaba: /e4mc debug <on|off|status>

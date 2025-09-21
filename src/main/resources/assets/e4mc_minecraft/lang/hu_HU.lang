@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Helyi játék a(z) [%s] tartományon van hosztolva
+text.e4mc_minecraft.closeServer=A helyi játék már nem nyilvánosan van hosztolva
+text.e4mc_minecraft.serverAlreadyClosed=A helyi játék nincs nyilvánosan hosztolva
+text.e4mc_minecraft.clickToStop= (Kattints ide a leállításhoz)
+text.e4mc_minecraft.error=Hiba történt az e4mc-ben
+text.e4mc_minecraft.serverAlreadyOpen=A helyi játék már nyilvánosan van hosztolva
+text.e4mc_minecraft.status.noSession=Még nincs munkamenet. Használd: /e4mc start.
+text.e4mc_minecraft.status.line=Állapot=%s, via=%s, azonosító=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Utolsó hiba: %s
+text.e4mc_minecraft.status.broker=Bróker: %s (HTTP %s) válasz: %s
+text.e4mc_minecraft.debug.enabled=Diagnosztika engedélyezve
+text.e4mc_minecraft.debug.disabled=Diagnosztika letiltva
+text.e4mc_minecraft.debug.status=A hibakeresés %s
+text.e4mc_minecraft.debug.usage=Használat: /e4mc debug <on|off|status>

@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Ang lokal na laro ay naka-host sa domain na [%s]
+text.e4mc_minecraft.closeServer=Ang lokal na laro ay hindi na naka-host nang publiko
+text.e4mc_minecraft.serverAlreadyClosed=Ang lokal na laro ay hindi naka-host nang publiko
+text.e4mc_minecraft.clickToStop= (I-click dito para ihinto)
+text.e4mc_minecraft.error=Nagkaroon ng error sa e4mc
+text.e4mc_minecraft.serverAlreadyOpen=Ang lokal na laro ay naka-host na nang publiko
+text.e4mc_minecraft.status.noSession=Wala pang session. Gamitin ang /e4mc start.
+text.e4mc_minecraft.status.line=Estado=%s, sa pamamagitan ng=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Huling error: %s
+text.e4mc_minecraft.status.broker=Broker: %s (HTTP %s) tugon: %s
+text.e4mc_minecraft.debug.enabled=Naka-enable ang diagnostic
+text.e4mc_minecraft.debug.disabled=Naka-disable ang diagnostic
+text.e4mc_minecraft.debug.status=Ang debug ay %s
+text.e4mc_minecraft.debug.usage=Paggamit: /e4mc debug <on|off|status>

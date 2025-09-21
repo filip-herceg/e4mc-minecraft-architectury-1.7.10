@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Game lokal dihosting pada domain [%s]
+text.e4mc_minecraft.closeServer=Game lokal tidak lagi dihosting secara publik
+text.e4mc_minecraft.serverAlreadyClosed=Game lokal tidak dihosting secara publik
+text.e4mc_minecraft.clickToStop= (Klik di sini untuk berhenti)
+text.e4mc_minecraft.error=Terjadi kesalahan di e4mc
+text.e4mc_minecraft.serverAlreadyOpen=Game lokal sudah dihosting secara publik
+text.e4mc_minecraft.status.noSession=Belum ada sesi. Gunakan /e4mc start.
+text.e4mc_minecraft.status.line=Status=%s, lewat=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Kesalahan terakhir: %s
+text.e4mc_minecraft.status.broker=Broker: %s (HTTP %s) respons: %s
+text.e4mc_minecraft.debug.enabled=Diagnostik diaktifkan
+text.e4mc_minecraft.debug.disabled=Diagnostik dinonaktifkan
+text.e4mc_minecraft.debug.status=Debug adalah %s
+text.e4mc_minecraft.debug.usage=Penggunaan: /e4mc debug <on|off|status>

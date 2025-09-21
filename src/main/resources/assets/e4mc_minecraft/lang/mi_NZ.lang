@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Kei te manaaki te kēmu ā-rohe i te rohe ingoa [%s]
+text.e4mc_minecraft.closeServer=Kāore te kēmu ā-rohe e manaaki tūmatanui ināianei
+text.e4mc_minecraft.serverAlreadyClosed=Kāore te kēmu ā-rohe e manaaki tūmatanui
+text.e4mc_minecraft.clickToStop= (Pāwhiria ki konei kia whakamutu)
+text.e4mc_minecraft.error=I puta he hapa ki e4mc
+text.e4mc_minecraft.serverAlreadyOpen=Kei te manaaki tūmatanui kē te kēmu ā-rohe
+text.e4mc_minecraft.status.noSession=Kāore anō he wātū. Whakamahia te /e4mc start.
+text.e4mc_minecraft.status.line=Tūnga=%s, mā=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Hapa whakamutunga: %s
+text.e4mc_minecraft.status.broker=Kaihoko: %s (HTTP %s) whakautu: %s
+text.e4mc_minecraft.debug.enabled=Kua whakahohea te tātaritanga
+text.e4mc_minecraft.debug.disabled=Kua mono te tātaritanga
+text.e4mc_minecraft.debug.status=Ko te wetewete he %s
+text.e4mc_minecraft.debug.usage=Whakamahi: /e4mc debug <on|off|status>

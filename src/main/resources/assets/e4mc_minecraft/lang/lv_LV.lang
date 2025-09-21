@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Lokālā spēle tiek mitināta domēnā [%s]
+text.e4mc_minecraft.closeServer=Lokālā spēle vairs netiek mitināta publiski
+text.e4mc_minecraft.serverAlreadyClosed=Lokālā spēle netiek mitināta publiski
+text.e4mc_minecraft.clickToStop= (Noklikšķiniet šeit, lai apturētu)
+text.e4mc_minecraft.error=Radās kļūda e4mc
+text.e4mc_minecraft.serverAlreadyOpen=Lokālā spēle jau tiek mitināta publiski
+text.e4mc_minecraft.status.noSession=Vēl nav sesijas. Izmantojiet /e4mc start.
+text.e4mc_minecraft.status.line=Statuss=%s, caur=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Pēdējā kļūda: %s
+text.e4mc_minecraft.status.broker=Starpnieks: %s (HTTP %s) atbilde: %s
+text.e4mc_minecraft.debug.enabled=Diagnostika ieslēgta
+text.e4mc_minecraft.debug.disabled=Diagnostika izslēgta
+text.e4mc_minecraft.debug.status=Atkļūdošana ir %s
+text.e4mc_minecraft.debug.usage=Izmantošana: /e4mc debug <on|off|status>

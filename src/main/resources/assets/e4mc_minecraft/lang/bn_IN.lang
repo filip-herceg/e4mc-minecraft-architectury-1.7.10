@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=লোকাল গেম ডোমেইন [%s]-এ হোস্ট করা হয়েছে
+text.e4mc_minecraft.closeServer=লোকাল গেম আর পাবলিকভাবে হোস্ট করা নেই
+text.e4mc_minecraft.serverAlreadyClosed=লোকাল গেম পাবলিকভাবে হোস্ট করা নেই
+text.e4mc_minecraft.clickToStop= (বন্ধ করতে এখানে ক্লিক করুন)
+text.e4mc_minecraft.error=e4mc-এ একটি ত্রুটি ঘটেছে
+text.e4mc_minecraft.serverAlreadyOpen=লোকাল গেম ইতিমধ্যেই পাবলিকভাবে হোস্ট করা
+text.e4mc_minecraft.status.noSession=এখনও কোনো সেশন নেই। /e4mc start ব্যবহার করুন।
+text.e4mc_minecraft.status.line=অবস্থা=%s, মারফত=%s, আইডি=%s, %s:%s
+text.e4mc_minecraft.status.lastError=সর্বশেষ ত্রুটি: %s
+text.e4mc_minecraft.status.broker=ব্রোকার: %s (HTTP %s) প্রতিক্রিয়া: %s
+text.e4mc_minecraft.debug.enabled=ডায়াগনস্টিক সক্রিয়
+text.e4mc_minecraft.debug.disabled=ডায়াগনস্টিক নিষ্ক্রিয়
+text.e4mc_minecraft.debug.status=ডিবাগ %s
+text.e4mc_minecraft.debug.usage=ব্যবহার: /e4mc debug <on|off|status>

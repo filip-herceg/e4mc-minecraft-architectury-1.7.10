@@ -1,0 +1,14 @@
+text.e4mc_minecraft.domainAssigned=Paikallinen peli isännöidään verkkotunnuksessa [%s]
+text.e4mc_minecraft.closeServer=Paikallista peliä ei enää isännöidä julkisesti
+text.e4mc_minecraft.serverAlreadyClosed=Paikallista peliä ei isännöidä julkisesti
+text.e4mc_minecraft.clickToStop= (Napsauta tästä lopettaaksesi)
+text.e4mc_minecraft.error=Tapahtui virhe e4mc:ssä
+text.e4mc_minecraft.serverAlreadyOpen=Paikallinen peli on jo julkisesti isännöity
+text.e4mc_minecraft.status.noSession=Ei vielä istuntoa. Käytä /e4mc start.
+text.e4mc_minecraft.status.line=Tila=%s, kautta=%s, id=%s, %s:%s
+text.e4mc_minecraft.status.lastError=Viimeinen virhe: %s
+text.e4mc_minecraft.status.broker=Välittäjä: %s (HTTP %s) vastaus: %s
+text.e4mc_minecraft.debug.enabled=Diagnostiikka käytössä
+text.e4mc_minecraft.debug.disabled=Diagnostiikka pois käytöstä
+text.e4mc_minecraft.debug.status=Debug on %s
+text.e4mc_minecraft.debug.usage=Käyttö: /e4mc debug <on|off|status>
